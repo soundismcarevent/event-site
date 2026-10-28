@@ -1,10 +1,441 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <title>イベントサイト</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOUND-ISM 2027 | サウンドイズム @ 富士スピードウェイ</title>
+  <!-- Google Fonts: Bebas Neue, Montserrat, Tourney -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&family=Noto+Sans+JP:wght@400;700;900&family=Tourney:ital,wght@1,900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#ff1438',
+              crimson: '#99001b',
+              dark: '#08080a',
+              card: '#121216',
+              border: '#2a2a35'
+            }
+          },
+          fontFamily: {
+            headline: ['"Bebas Neue"', '"Anton"', 'sans-serif'],
+            tourney: ['"Tourney"', 'sans-serif'],
+            montserrat: ['"Montserrat"', '"Noto Sans JP"', 'sans-serif'],
+            jp: ['"Noto Sans JP"', 'sans-serif']
+          },
+          animation: {
+            'pulse-fast': 'pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glitch': 'glitch 2s infinite ease-in-out',
+            'bass': 'bassPump 0.8s infinite ease-out'
+          },
+          keyframes: {
+            bassPump: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.015)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* グリモッド・ストリート調の背景ノイズとハーフストーンパターン */
+    body {
+      background-color: #08080a;
+      color: #f3f4f6;
+      font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ハーフトーンドット柄 */
+    .halftone-bg {
+      background-image: radial-gradient(rgba(255, 20, 56, 0.15) 1.5px, transparent 1.5px), radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-position: 0 0, 12px 12px;
+    }
+
+    /* ノイズテクスチャ風オーバーレイ */
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+      opacity: 0.035;
+      background: repeating-radial-gradient(#fff 0 0.0001%, #000 0 0.0002%);
+      background-size: 200px 200px;
+    }
+
+    /* テキストのアウトライン＆グロー */
+    .text-stroke-red {
+      -webkit-text-stroke: 1.5px #ff1438;
+      color: transparent;
+    }
+
+    .neon-glow {
+      text-shadow: 0 0 25px rgba(255, 20, 56, 0.65), 0 0 50px rgba(255, 20, 56, 0.3);
+    }
+
+    .clip-slanted {
+      clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+    }
+
+    .clip-tag {
+      clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+    }
+
+    /* イコライザーバーのアニメーション */
+    .eq-bar {
+      animation: eqBounce 1.2s ease-in-out infinite alternate;
+      transform-origin: bottom;
+    }
+    @keyframes eqBounce {
+      0% { height: 15%; }
+      50% { height: 85%; }
+      100% { height: 35%; }
+    }
+  </style>
 </head>
-<body>
-  <h1>こんにちわ</h1>
+<body class="halftone-bg relative min-h-screen selection:bg-brand-red selection:text-white">
+
+  <!-- ノイズオーバーレイ -->
+  <div class="noise-overlay"></div>
+
+  <!-- ナビゲーションバー -->
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/80 border-b border-white/10 px-4 md:px-8 py-3.5 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <span class="font-headline tracking-wider text-2xl md:text-3xl font-black italic text-white flex items-center gap-1">
+        SOUND<span class="text-brand-red">-</span>ISM
+      </span>
+      <span class="bg-brand-red text-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded tracking-widest uppercase">2027</span>
+    </div>
+    
+    <div class="flex items-center space-x-4">
+      <div class="hidden sm:flex items-center space-x-1 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs text-gray-300">
+        <i class="fa-solid fa-location-dot text-brand-red mr-1.5"></i>
+        <span>FUJI SPEEDWAY</span>
+      </div>
+      <a href="#register" class="bg-brand-red hover:bg-red-600 transition duration-200 text-white font-headline text-lg tracking-widest px-5 py-1.5 rounded uppercase font-bold shadow-lg shadow-brand-red/30">
+        Entry Info
+      </a>
+    </div>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden flex flex-col items-center justify-center text-center px-4">
+    
+    <!-- 背景のアンビエントライティング -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[650px] h-[350px] md:h-[650px] bg-brand-red/20 blur-[130px] rounded-full -z-10 pointer-events-none"></div>
+
+    <!-- サブタイトルバッジ -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-brand-red/40 text-brand-red text-xs md:text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-sm animate-pulse-fast">
+      <span class="w-2 h-2 rounded-full bg-brand-red"></span>
+      THE NEXT-LEVEL CAR SOUND & BASS CULTURE FEST
+    </div>
+
+    <!-- メインロゴ・タイポグラフィ領域（ロゴ画像またはタイポスタイルで表示） -->
+    <div class="relative w-full max-w-4xl mx-auto px-2 mb-4 group">
+      
+      <!-- ロゴ画像の配置場所：同じフォルダに 'logo.jpg' や 'logo.png' をアップロードして使えるように設定 -->
+      <div class="relative inline-block w-full max-w-2xl rounded-2xl p-2 bg-gradient-to-b from-white/10 to-transparent border border-white/10 backdrop-blur-sm shadow-2xl">
+        <img 
+          src="logo.jpg" 
+          alt="SOUND-ISM 2027 ロゴ" 
+          class="w-full h-auto rounded-xl object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
+          onerror="this.onerror=null; this.classList.add('hidden'); document.getElementById('hero-text-fallback').classList.remove('hidden');"
+        />
+        <!-- 画像がない場合のフォールバック表示 -->
+        <div id="hero-text-fallback" class="hidden py-8 px-4">
+          <h1 class="font-headline text-6xl sm:text-8xl md:text-9xl tracking-tighter text-white font-black italic neon-glow">
+            SOUND-ISM
+          </h1>
+          <div class="bg-white text-black font-jp font-black text-xl sm:text-3xl tracking-[0.4em] py-1 px-4 mt-2 inline-block">
+            サウンドイズム
+          </div>
+        </div>
+      </div>
+
+      <!-- 2027 年号バッジ -->
+      <div class="mt-4 flex items-center justify-center gap-3">
+        <div class="h-0.5 w-12 bg-gradient-to-r from-transparent to-brand-red"></div>
+        <span class="font-tourney text-4xl sm:text-6xl md:text-7xl font-black italic tracking-widest text-white drop-shadow-[0_0_15px_#ff1438]">
+          2027
+        </span>
+        <div class="h-0.5 w-12 bg-gradient-to-l from-transparent to-brand-red"></div>
+      </div>
+    </div>
+
+    <!-- 日程＆ロケーション メイン表示 -->
+    <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-4 text-sm sm:text-base md:text-lg font-bold tracking-wide">
+      <div class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-xl border border-white/10 backdrop-blur">
+        <i class="fa-regular fa-calendar-days text-brand-red text-xl"></i>
+        <span class="text-white font-montserrat">2027.02.14 <span class="text-brand-red">SUN</span></span>
+      </div>
+      <div class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-xl border border-white/10 backdrop-blur">
+        <i class="fa-solid fa-flag-checkered text-brand-red text-xl"></i>
+        <span class="text-gray-200">静岡県 富士スピードウェイ</span>
+      </div>
+    </div>
+
+    <!-- カウントダウンタイマー -->
+    <div class="w-full max-w-xl mt-10 p-5 rounded-2xl bg-black/70 border border-brand-red/30 backdrop-blur-md shadow-[0_0_30px_rgba(255,20,56,0.15)]">
+      <div class="text-xs uppercase tracking-[0.3em] text-gray-400 font-bold mb-3 flex items-center justify-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+        Count Down to 2027.02.14
+      </div>
+      <div class="grid grid-cols-4 gap-2 sm:gap-4 font-headline text-center">
+        <div class="bg-white/5 p-2 sm:p-3 rounded-lg border border-white/5">
+          <span id="cd-days" class="text-3xl sm:text-5xl font-black text-white block">---</span>
+          <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">DAYS</span>
+        </div>
+        <div class="bg-white/5 p-2 sm:p-3 rounded-lg border border-white/5">
+          <span id="cd-hours" class="text-3xl sm:text-5xl font-black text-brand-red block">--</span>
+          <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">HOURS</span>
+        </div>
+        <div class="bg-white/5 p-2 sm:p-3 rounded-lg border border-white/5">
+          <span id="cd-minutes" class="text-3xl sm:text-5xl font-black text-white block">--</span>
+          <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">MINUTES</span>
+        </div>
+        <div class="bg-white/5 p-2 sm:p-3 rounded-lg border border-white/5">
+          <span id="cd-seconds" class="text-3xl sm:text-5xl font-black text-brand-red block">--</span>
+          <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">SECONDS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- アクションボタン群 -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a href="#venue" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-3.5 rounded-xl transition flex items-center gap-2 tracking-wider text-sm sm:text-base">
+        <i class="fa-solid fa-map-location-dot text-brand-red"></i>
+        会場アクセス詳細
+      </a>
+      <a href="#register" class="bg-brand-red hover:bg-red-600 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-red/40 flex items-center gap-2 tracking-wider text-sm sm:text-base group">
+        <span>エントリー最新情報</span>
+        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+      </a>
+    </div>
+
+    <!-- 擬似イコライザー装飾（海外オーディオフェス風） -->
+    <div class="flex items-end justify-center gap-1.5 h-10 mt-12 opacity-75">
+      <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.1s;"></span>
+      <span class="eq-bar w-1.5 bg-white rounded-t" style="animation-delay: 0.4s;"></span>
+      <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.2s;"></span>
+      <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.6s;"></span>
+      <span class="eq-bar w-1.5 bg-white rounded-t" style="animation-delay: 0.3s;"></span>
+      <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.5s;"></span>
+      <span class="eq-bar w-1.5 bg-white rounded-t" style="animation-delay: 0.15s;"></span>
+    </div>
+  </section>
+
+  <!-- イベントスペック・概要カード -->
+  <section class="max-w-5xl mx-auto px-4 py-12">
+    <div class="border-t border-b border-white/10 py-4 mb-10 flex items-center justify-between">
+      <h2 class="font-headline text-3xl md:text-4xl tracking-wider text-white">
+        EVENT <span class="text-brand-red">OVERVIEW</span>
+      </h2>
+      <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">OFFICIAL SPEC // 2027</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- CARD 1: DATE -->
+      <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl p-6 relative group overflow-hidden">
+        <div class="absolute -right-6 -bottom-6 text-white/5 font-headline text-8xl pointer-events-none group-hover:text-brand-red/10 transition">
+          01
+        </div>
+        <div class="w-12 h-12 rounded-xl bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red mb-5 text-xl">
+          <i class="fa-regular fa-clock"></i>
+        </div>
+        <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Schedule</div>
+        <h3 class="text-xl font-black text-white mb-2">2027年2月14日 (日)</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          真冬の空気に響き渡る極限の重低音。タイムスケジュールや開場・搬入時間の詳細は決定次第順次公開予定です。
+        </p>
+      </div>
+
+      <!-- CARD 2: VENUE -->
+      <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl p-6 relative group overflow-hidden">
+        <div class="absolute -right-6 -bottom-6 text-white/5 font-headline text-8xl pointer-events-none group-hover:text-brand-red/10 transition">
+          02
+        </div>
+        <div class="w-12 h-12 rounded-xl bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red mb-5 text-xl">
+          <i class="fa-solid fa-road"></i>
+        </div>
+        <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Circuit Location</div>
+        <h3 class="text-xl font-black text-white mb-2">富士スピードウェイ</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          日本を代表するモータースポーツの聖地。大音量サウンドを全力で鳴らし切る広大な特設エリアで開催。
+        </p>
+      </div>
+
+      <!-- CARD 3: CONCEPT -->
+      <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl p-6 relative group overflow-hidden">
+        <div class="absolute -right-6 -bottom-6 text-white/5 font-headline text-8xl pointer-events-none group-hover:text-brand-red/10 transition">
+          03
+        </div>
+        <div class="w-12 h-12 rounded-xl bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red mb-5 text-xl">
+          <i class="fa-solid fa-volume-high"></i>
+        </div>
+        <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Culture</div>
+        <h3 class="text-xl font-black text-white mb-2">SOUND-ISM VIBES</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          カスタムカー、オーディオビルド、ストリートミュージック、グラフィティが交差する最高峰のサウンドミーティング。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 会場アクセスセクション -->
+  <section id="venue" class="max-w-5xl mx-auto px-4 py-12">
+    <div class="bg-brand-card border border-brand-border rounded-3xl p-6 md:p-10 relative overflow-hidden">
+      
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+        <div>
+          <span class="text-brand-red text-xs font-mono font-bold tracking-widest uppercase block mb-1">LOCATION & VENUE</span>
+          <h2 class="text-2xl md:text-4xl font-black text-white font-headline tracking-wide">
+            FUJI INTERNATIONAL SPEEDWAY
+          </h2>
+          <p class="text-gray-300 text-sm mt-1">静岡県駿東郡小山町中日向694</p>
+        </div>
+
+        <button 
+          id="copyBtn" 
+          onclick="copyAddress()" 
+          class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white text-xs font-bold px-4 py-2.5 rounded-lg border border-white/20 transition cursor-pointer self-start md:self-auto"
+        >
+          <i class="fa-regular fa-copy text-brand-red"></i>
+          <span id="copyBtnText">住所をコピーする</span>
+        </button>
+      </div>
+
+      <!-- 富士スピードウェイへのGoogleマップ埋め込み（APIキー不要の公開埋め込み） -->
+      <div class="w-full h-72 md:h-96 rounded-2xl overflow-hidden border border-white/10 shadow-inner filter grayscale contrast-125 hover:filter-none transition duration-500">
+        <iframe 
+          title="Fuji Speedway Map"
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          loading="lazy" 
+          allowfullscreen 
+          src="https://maps.google.com/maps?q=Fuji%20International%20Speedway%20Shizuoka&t=&z=13&ie=UTF8&iwloc=&output=embed">
+        </iframe>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 text-sm text-gray-400">
+        <div class="bg-black/40 p-4 rounded-xl border border-white/5">
+          <div class="text-white font-bold flex items-center gap-2 mb-1">
+            <i class="fa-solid fa-car text-brand-red"></i>
+            お車でお越しの方
+          </div>
+          東名高速道路「大井松田I.C.」または「御殿場I.C.」より約20分。新東名「新御殿場I.C.」より約15分。
+        </div>
+        <div class="bg-black/40 p-4 rounded-xl border border-white/5">
+          <div class="text-white font-bold flex items-center gap-2 mb-1">
+            <i class="fa-solid fa-circle-info text-brand-red"></i>
+            入場ゲート・専用エリア
+          </div>
+          当イベント特設会場のゲート番号、搬入経路、駐車場割当は後日案内を掲載します。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お知らせ・事前エントリー（Coming Soon） -->
+  <section id="register" class="max-w-5xl mx-auto px-4 py-12">
+    <div class="relative rounded-3xl p-8 md:p-12 border border-brand-red/50 bg-gradient-to-r from-brand-crimson/30 via-black to-brand-crimson/20 overflow-hidden text-center">
+      
+      <div class="max-w-2xl mx-auto">
+        <span class="inline-block bg-brand-red text-white text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+          STAY TUNED
+        </span>
+        <h2 class="font-headline text-3xl md:text-5xl font-black text-white tracking-wider mb-4">
+          ENTRY INFORMATION COMING SOON
+        </h2>
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-8">
+          カーオーディオエントリークラス、出展ブース募集、一般観覧チケットの詳細は順次公式発表いたします。最新情報は随時本ページを更新いたします。
+        </p>
+
+        <!-- メモ用ボックス -->
+        <div class="inline-flex items-center gap-3 bg-black/60 border border-white/10 px-6 py-3 rounded-2xl text-xs md:text-sm text-gray-300">
+          <i class="fa-solid fa-triangle-exclamation text-brand-red"></i>
+          <span>現在サイト制作中（ティザー公開中）です</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="border-t border-white/10 bg-black/80 py-10 px-4 text-center text-xs text-gray-500">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-headline text-2xl tracking-widest text-white">
+        SOUND<span class="text-brand-red">-</span>ISM <span class="text-brand-red font-tourney text-xl">2027</span>
+      </div>
+      <p>© 2027 SOUND-ISM PROJECT. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
+  <!-- スクリプト：カウントダウン ＆ 住所コピー -->
+  <script>
+    // 2027年2月14日 09:00 (JST) までのカウントダウン
+    const targetDate = new Date("2027-02-14T09:00:00+09:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        document.getElementById("cd-days").textContent = "00";
+        document.getElementById("cd-hours").textContent = "00";
+        document.getElementById("cd-minutes").textContent = "00";
+        document.getElementById("cd-seconds").textContent = "00";
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("cd-days").textContent = String(days).padStart(2, '0');
+      document.getElementById("cd-hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("cd-minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("cd-seconds").textContent = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 住所コピー機能（iFrame制限に配慮したexecCommand方式）
+    function copyAddress() {
+      const addressText = "静岡県駿東郡小山町中日向694 富士スピードウェイ";
+      const dummyInput = document.createElement("textarea");
+      dummyInput.value = addressText;
+      document.body.appendChild(dummyInput);
+      dummyInput.select();
+      try {
+        document.execCommand('copy');
+        const btnText = document.getElementById("copyBtnText");
+        btnText.innerText = "コピー完了！";
+        setTimeout(() => {
+          btnText.innerText = "住所をコピーする";
+        }, 2000);
+      } catch (err) {
+        console.error("コピーに失敗しました", err);
+      }
+      document.body.removeChild(dummyInput);
+    }
+  </script>
 </body>
 </html>
