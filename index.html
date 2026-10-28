@@ -116,21 +116,27 @@
   <!-- ナビゲーションバー -->
   <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/80 border-b border-white/10 px-4 md:px-8 py-3.5 flex items-center justify-between">
     <div class="flex items-center space-x-3">
-      <span class="font-headline tracking-wider text-2xl md:text-3xl font-black italic text-white flex items-center gap-1">
+      <a href="index.html" class="font-headline tracking-wider text-2xl md:text-3xl font-black italic text-white flex items-center gap-1">
         SOUND<span class="text-brand-red">-</span>ISM
-      </span>
+      </a>
       <span class="bg-brand-red text-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded tracking-widest uppercase">2027</span>
     </div>
     
-    <div class="flex items-center space-x-4">
-      <div class="hidden sm:flex items-center space-x-1 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs text-gray-300">
+    <nav class="flex items-center space-x-3 sm:space-x-6">
+      <a href="index.html" class="text-brand-red font-headline tracking-widest text-base sm:text-lg uppercase font-bold hover:text-white transition">
+        TOP
+      </a>
+      <a href="entry.html" class="text-gray-300 font-headline tracking-widest text-base sm:text-lg uppercase font-bold hover:text-brand-red transition">
+        ENTRY
+      </a>
+      <a href="schedule.html" class="text-gray-300 font-headline tracking-widest text-base sm:text-lg uppercase font-bold hover:text-brand-red transition">
+        SCHEDULE
+      </a>
+      <div class="hidden sm:flex items-center space-x-1 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs text-gray-300 ml-2">
         <i class="fa-solid fa-location-dot text-brand-red mr-1.5"></i>
         <span>FUJI SPEEDWAY</span>
       </div>
-      <a href="#register" class="bg-brand-red hover:bg-red-600 transition duration-200 text-white font-headline text-lg tracking-widest px-5 py-1.5 rounded uppercase font-bold shadow-lg shadow-brand-red/30">
-        Entry Info
-      </a>
-    </div>
+    </nav>
   </header>
 
   <!-- ヒーローセクション -->
@@ -145,10 +151,9 @@
       THE NEXT-LEVEL CAR SOUND & BASS CULTURE FEST
     </div>
 
-    <!-- メインロゴ・タイポグラフィ領域（ロゴ画像またはタイポスタイルで表示） -->
+    <!-- メインロゴ・タイポグラフィ領域 -->
     <div class="relative w-full max-w-4xl mx-auto px-2 mb-4 group">
       
-      <!-- ロゴ画像の配置場所：同じフォルダに 'logo.jpg' や 'logo.png' をアップロードして使えるように設定 -->
       <div class="relative inline-block w-full max-w-2xl rounded-2xl p-2 bg-gradient-to-b from-white/10 to-transparent border border-white/10 backdrop-blur-sm shadow-2xl">
         <img 
           src="logo.jpg" 
@@ -221,13 +226,13 @@
         <i class="fa-solid fa-map-location-dot text-brand-red"></i>
         会場アクセス詳細
       </a>
-      <a href="#register" class="bg-brand-red hover:bg-red-600 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-red/40 flex items-center gap-2 tracking-wider text-sm sm:text-base group">
-        <span>エントリー最新情報</span>
+      <a href="entry.html" class="bg-brand-red hover:bg-red-600 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-red/40 flex items-center gap-2 tracking-wider text-sm sm:text-base group">
+        <span>エントリー料金一覧</span>
         <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
       </a>
     </div>
 
-    <!-- 擬似イコライザー装飾（海外オーディオフェス風） -->
+    <!-- 擬似イコライザー装飾 -->
     <div class="flex items-end justify-center gap-1.5 h-10 mt-12 opacity-75">
       <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.1s;"></span>
       <span class="eq-bar w-1.5 bg-white rounded-t" style="animation-delay: 0.4s;"></span>
@@ -320,7 +325,7 @@
         </button>
       </div>
 
-      <!-- 富士スピードウェイへのGoogleマップ埋め込み（APIキー不要の公開埋め込み） -->
+      <!-- Googleマップ埋め込み -->
       <div class="w-full h-72 md:h-96 rounded-2xl overflow-hidden border border-white/10 shadow-inner filter grayscale contrast-125 hover:filter-none transition duration-500">
         <iframe 
           title="Fuji Speedway Map"
@@ -417,7 +422,7 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // 住所コピー機能（iFrame制限に配慮したexecCommand方式）
+    // 住所コピー機能
     function copyAddress() {
       const addressText = "静岡県駿東郡小山町中日向694 富士スピードウェイ";
       const dummyInput = document.createElement("textarea");

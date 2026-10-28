@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCHEDULE | SOUND-ISM 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #060608;
+      --card-bg: rgba(16, 16, 20, 0.75);
+      --card-border: rgba(255, 30, 56, 0.25);
+      --accent-red: #ff1e38;
+      --text-white: #f5f5f5;
+      --text-gray: #9e9ea7;
+      --font-display: 'Anton', 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-white);
+      font-family: 'Noto Sans JP', 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 15% 15%, rgba(255, 30, 56, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(255, 30, 56, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(20, 20, 25, 0.9) 0%, #060608 100%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 35px 35px, 35px 35px;
+      z-index: -2;
+    }
+
+    header {
+      width: 100%;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 30, 56, 0.2);
+      background: rgba(6, 6, 8, 0.9);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: var(--text-white);
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .brand span {
+      color: var(--accent-red);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text-gray);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.25s, text-shadow 0.25s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--text-white);
+      text-shadow: 0 0 12px var(--accent-red);
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-red);
+      box-shadow: 0 0 8px var(--accent-red);
+    }
+
+    main {
+      flex: 1;
+      max-width: 850px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      letter-spacing: 3px;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .page-title span {
+      color: var(--accent-red);
+    }
+
+    .page-sub {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+      letter-spacing: 1px;
+    }
+
+    .timeline {
+      position: relative;
+      border-left: 2px solid #2a2a32;
+      margin-left: 1rem;
+      padding-left: 2.2rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.2rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.65rem;
+      top: 0.4rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-color);
+      border: 3px solid var(--accent-red);
+      box-shadow: 0 0 10px rgba(255, 30, 56, 0.9);
+    }
+
+    .timeline-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 1.3rem 1.6rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.2s;
+    }
+
+    .timeline-content:hover {
+      border-color: rgba(255, 30, 56, 0.6);
+    }
+
+    .timeline-time {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--accent-red);
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 2.2rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="brand">SOUND-ISM <span>2027</span></a>
+    <nav>
+      <a href="index.html">TOP</a>
+      <a href="entry.html">ENTRY</a>
+      <a href="schedule.html" class="active">SCHEDULE</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">TIME <span>SCHEDULE</span></h1>
+    <p class="page-sub">2027.02.14 SUN @ 富士スピードウェイ 当日スケジュール</p>
+
+    <div class="timeline">
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-time">07:00</div>
+          <div class="timeline-title">エントリー車両 搬入開始</div>
+          <div class="timeline-desc">指定ゲートより順次入場・搬入・配置となります。スタッフの誘導に従ってください。</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-time">09:00</div>
+          <div class="timeline-title">一般開場 / ゲートオープン</div>
+          <div class="timeline-desc">一般来場者の入場受付および当日券販売を開始します。</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-time">10:00</div>
+          <div class="timeline-title">オープニングセレモニー / 音出し解禁</div>
+          <div class="timeline-desc">開会宣言とともにメインステージおよび各ブースでのサウンドアピールが解禁されます。</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-time">11:30 - 14:30</div>
+          <div class="timeline-title">サウンドコンペティション＆DJタイム</div>
+          <div class="timeline-desc">審査員による音響審査およびゲストDJによるパフォーマンスを実施。</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-time">15:00</div>
+          <div class="timeline-title">アワード発表・表彰式</div>
+          <div class="timeline-desc">各クラスの受賞車両発表およびトロフィー授与式を行います。</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-time">16:30</div>
+          <div class="timeline-title">イベント終了 / 車両完全搬出</div>
+          <div class="timeline-desc">誘導に従って安全に退場してください。</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2027 SOUND-ISM. ALL RIGHTS RESERVED.
+  </footer>
+
+</body>
+</html>
