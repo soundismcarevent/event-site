@@ -58,6 +58,38 @@
       overflow-x: hidden;
     }
 
+    /* オープニングアニメーション演出 */
+    #opening-splash {
+      transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+    }
+    #opening-splash.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    @keyframes logoEntry {
+      0% {
+        transform: scale(0.85);
+        opacity: 0;
+        filter: blur(8px) drop-shadow(0 0 0 transparent);
+      }
+      50% {
+        transform: scale(1.02);
+        opacity: 1;
+        filter: blur(0) drop-shadow(0 0 40px rgba(255, 20, 56, 0.8));
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0) drop-shadow(0 0 25px rgba(255, 20, 56, 0.4));
+      }
+    }
+
+    .opening-logo-anim {
+      animation: logoEntry 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
     /* ハーフトーンドット柄 */
     .halftone-bg {
       background-image: radial-gradient(rgba(255, 20, 56, 0.15) 1.5px, transparent 1.5px), radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
@@ -79,21 +111,8 @@
     }
 
     /* テキストのアウトライン＆グロー */
-    .text-stroke-red {
-      -webkit-text-stroke: 1.5px #ff1438;
-      color: transparent;
-    }
-
     .neon-glow {
       text-shadow: 0 0 25px rgba(255, 20, 56, 0.65), 0 0 50px rgba(255, 20, 56, 0.3);
-    }
-
-    .clip-slanted {
-      clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
-    }
-
-    .clip-tag {
-      clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
     }
 
     /* イコライザーバーのアニメーション */
@@ -110,26 +129,60 @@
 </head>
 <body class="halftone-bg relative min-h-screen selection:bg-brand-red selection:text-white">
 
+  <!-- オープニング スプラッシュスクリーン -->
+  <div id="opening-splash" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#060608] px-4 overflow-hidden">
+    <!-- 背景グロー -->
+    <div class="absolute w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-red/25 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="opening-logo-anim relative w-full max-w-lg flex flex-col items-center">
+      <div class="relative w-full rounded-2xl p-2 bg-gradient-to-b from-white/10 to-transparent border border-white/15 backdrop-blur-md shadow-[0_0_50px_rgba(255,20,56,0.3)]">
+        <img 
+          src="logo.jpg" 
+          alt="SOUND-ISM 2027" 
+          class="w-full h-auto rounded-xl object-contain"
+          onerror="this.onerror=null; this.classList.add('hidden'); document.getElementById('splash-text-fallback').classList.remove('hidden');"
+        />
+        <div id="splash-text-fallback" class="hidden py-6 text-center">
+          <h1 class="font-headline text-5xl sm:text-7xl font-black italic text-white tracking-wider neon-glow">
+            SOUND-ISM
+          </h1>
+        </div>
+      </div>
+
+      <!-- 年号 & サブタイトル -->
+      <div class="mt-5 flex items-center justify-center gap-3">
+        <div class="h-0.5 w-8 bg-gradient-to-r from-transparent to-brand-red"></div>
+        <span class="font-tourney text-3xl sm:text-5xl font-black italic tracking-widest text-white drop-shadow-[0_0_15px_#ff1438]">
+          2027
+        </span>
+        <div class="h-0.5 w-8 bg-gradient-to-l from-transparent to-brand-red"></div>
+      </div>
+      <div class="text-[10px] sm:text-xs font-mono font-bold tracking-[0.4em] text-brand-red uppercase mt-2">
+        FUJI SPEEDWAY
+      </div>
+    </div>
+  </div>
+
   <!-- ノイズオーバーレイ -->
   <div class="noise-overlay"></div>
 
   <!-- ナビゲーションバー -->
-  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/80 border-b border-white/10 px-4 md:px-8 py-3.5 flex items-center justify-between">
-    <div class="flex items-center space-x-3">
-      <a href="index.html" class="font-headline tracking-wider text-2xl md:text-3xl font-black italic text-white flex items-center gap-1">
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/85 border-b border-white/10 px-3 sm:px-8 py-3 flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <a href="index.html" class="font-headline tracking-wider text-xl sm:text-3xl font-black italic text-white flex items-center gap-1">
         SOUND<span class="text-brand-red">-</span>ISM
       </a>
-      <span class="bg-brand-red text-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded tracking-widest uppercase">2027</span>
+      <span class="bg-brand-red text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 rounded tracking-widest uppercase">2027</span>
     </div>
     
-    <nav class="flex items-center space-x-3 sm:space-x-6">
-      <a href="index.html" class="text-brand-red font-headline tracking-widest text-base sm:text-lg uppercase font-bold hover:text-white transition">
+    <nav class="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-lg">
+      <a href="index.html" class="text-brand-red font-headline tracking-widest uppercase font-bold hover:text-white transition">
         TOP
       </a>
-      <a href="entry.html" class="text-gray-300 font-headline tracking-widest text-base sm:text-lg uppercase font-bold hover:text-brand-red transition">
+      <a href="entry.html" class="text-gray-300 font-headline tracking-widest uppercase font-bold hover:text-brand-red transition">
         ENTRY
       </a>
-      <a href="schedule.html" class="text-gray-300 font-headline tracking-widest text-base sm:text-lg uppercase font-bold hover:text-brand-red transition">
+      <a href="schedule.html" class="text-gray-300 font-headline tracking-widest uppercase font-bold hover:text-brand-red transition">
         SCHEDULE
       </a>
       <div class="hidden sm:flex items-center space-x-1 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs text-gray-300 ml-2">
@@ -161,7 +214,6 @@
           class="w-full h-auto rounded-xl object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
           onerror="this.onerror=null; this.classList.add('hidden'); document.getElementById('hero-text-fallback').classList.remove('hidden');"
         />
-        <!-- 画像がない場合のフォールバック表示 -->
         <div id="hero-text-fallback" class="hidden py-8 px-4">
           <h1 class="font-headline text-6xl sm:text-8xl md:text-9xl tracking-tighter text-white font-black italic neon-glow">
             SOUND-ISM
@@ -391,9 +443,20 @@
     </div>
   </footer>
 
-  <!-- スクリプト：カウントダウン ＆ 住所コピー -->
+  <!-- スクリプト：オープニング演出 ＆ カウントダウン ＆ 住所コピー -->
   <script>
-    // 2027年2月14日 09:00 (JST) までのカウントダウン
+    // オープニングスプラッシュ制御（約2秒表示後にフェードアウト）
+    window.addEventListener('load', () => {
+      const splash = document.getElementById('opening-splash');
+      setTimeout(() => {
+        if (splash) {
+          splash.classList.add('fade-out');
+          setTimeout(() => splash.remove(), 800);
+        }
+      }, 1800);
+    });
+
+    // カウントダウン
     const targetDate = new Date("2027-02-14T09:00:00+09:00").getTime();
 
     function updateCountdown() {
