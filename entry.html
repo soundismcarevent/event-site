@@ -3,16 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ENTRY & TICKET | SOUND-ISM 2027</title>
-  <!-- Google Fonts -->
+  <title>ENTRY | SOUND-ISM 2027</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&family=Noto+Sans+JP:wght@400;700;900&family=Tourney:ital,wght@1,900&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -37,7 +32,6 @@
       }
     }
   </script>
-
   <style>
     body {
       background-color: #08080a;
@@ -45,13 +39,11 @@
       font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
       overflow-x: hidden;
     }
-
     .halftone-bg {
       background-image: radial-gradient(rgba(255, 20, 56, 0.15) 1.5px, transparent 1.5px), radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
       background-size: 24px 24px;
       background-position: 0 0, 12px 12px;
     }
-
     .noise-overlay {
       position: fixed;
       inset: 0;
@@ -63,138 +55,65 @@
       background: repeating-radial-gradient(#fff 0 0.0001%, #000 0 0.0002%);
       background-size: 200px 200px;
     }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="halftone-bg relative min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
 
-  <!-- ノイズオーバーレイ -->
   <div class="noise-overlay"></div>
 
-  <!-- ナビゲーションバー（スマホ幅対応） -->
-  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/85 border-b border-white/10 px-3 sm:px-8 py-3 flex items-center justify-between">
-    <div class="flex items-center space-x-2">
-      <a href="index.html" class="font-headline tracking-wider text-xl sm:text-3xl font-black italic text-white flex items-center gap-1">
+  <!-- ナビゲーションバー -->
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/90 border-b border-white/10 px-3 sm:px-8 py-3 flex items-center justify-between">
+    <div class="flex items-center space-x-2 shrink-0">
+      <a href="index.html" class="font-headline tracking-wider text-xl sm:text-2xl font-black italic text-white flex items-center gap-1">
         SOUND<span class="text-brand-red">-</span>ISM
       </a>
-      <span class="bg-brand-red text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 rounded tracking-widest uppercase">2027</span>
+      <span class="bg-brand-red text-white text-[9px] sm:text-xs font-bold px-1.5 py-0.5 rounded tracking-widest uppercase">2027</span>
     </div>
     
-    <nav class="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-lg">
-      <a href="index.html" class="text-gray-300 font-headline tracking-widest uppercase font-bold hover:text-brand-red transition">
-        TOP
-      </a>
-      <a href="entry.html" class="text-brand-red font-headline tracking-widest uppercase font-bold hover:text-white transition">
-        ENTRY
-      </a>
-      <a href="schedule.html" class="text-gray-300 font-headline tracking-widest uppercase font-bold hover:text-brand-red transition">
-        SCHEDULE
-      </a>
+    <nav class="flex items-center space-x-3 sm:space-x-5 overflow-x-auto no-scrollbar text-xs sm:text-base font-headline tracking-widest uppercase font-bold pl-3">
+      <a href="index.html" class="text-gray-300 hover:text-brand-red transition whitespace-nowrap">TOP</a>
+      <a href="news.html" class="text-gray-300 hover:text-brand-red transition whitespace-nowrap">NEWS</a>
+      <a href="price.html" class="text-gray-300 hover:text-brand-red transition whitespace-nowrap">PRICE</a>
+      <a href="entry.html" class="text-brand-red hover:text-white transition whitespace-nowrap">ENTRY</a>
+      <a href="schedule.html" class="text-gray-300 hover:text-brand-red transition whitespace-nowrap">SCHEDULE</a>
     </nav>
   </header>
 
-  <!-- メインコンテンツ -->
   <main class="flex-1 max-w-4xl w-full mx-auto px-4 pt-28 pb-16">
     
-    <!-- タイトル部 -->
     <div class="text-center mb-10">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-brand-red/40 text-brand-red text-xs font-bold tracking-widest uppercase mb-3">
-        TICKET & REGISTRATION
+        REGISTRATION
       </div>
       <h1 class="font-headline text-4xl sm:text-6xl font-black tracking-wider text-white">
-        ENTRY <span class="text-brand-red">FEE</span>
+        ENTRY <span class="text-brand-red">FORM</span>
       </h1>
-      <p class="text-gray-400 text-xs sm:text-sm mt-2 font-jp">エントリー料金・各種チケット一覧</p>
+      <p class="text-gray-400 text-xs sm:text-sm mt-2 font-jp">エントリー受付</p>
     </div>
 
-    <!-- 車両エントリーセクション -->
-    <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden mb-8 shadow-xl">
-      <div class="bg-black/50 px-5 py-3.5 border-b border-white/10 flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-brand-red"></span>
-        <h2 class="text-white font-headline text-lg sm:text-xl tracking-wider uppercase font-bold">車両エントリー</h2>
+    <!-- Coming Soon ボックス -->
+    <div class="bg-brand-card border border-brand-border rounded-2xl p-8 sm:p-14 text-center shadow-xl relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 text-white/5 font-headline text-9xl pointer-events-none">
+        ENTRY
       </div>
-
-      <div class="divide-y divide-white/5">
-        <!-- 項目 1 -->
-        <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-white/[0.02] transition">
-          <div>
-            <div class="text-white font-bold text-base sm:text-lg">一般エントリー</div>
-            <div class="text-gray-400 text-xs sm:text-sm mt-0.5">車両1台 + 同乗者1名入場チケット含む</div>
-          </div>
-          <div class="text-left sm:text-right">
-            <span class="font-headline text-2xl sm:text-3xl text-white font-bold tracking-wide">¥10,000</span>
-            <span class="text-xs text-gray-400 ml-1 font-jp">(税込)</span>
-          </div>
-        </div>
-
-        <!-- 項目 2 -->
-        <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-white/[0.02] transition">
-          <div>
-            <div class="text-white font-bold text-base sm:text-lg">VIPエントリー</div>
-            <div class="text-gray-400 text-xs sm:text-sm mt-0.5">メインエリア優先配置 + 限定記念ノベルティ付き</div>
-          </div>
-          <div class="text-left sm:text-right">
-            <span class="font-headline text-2xl sm:text-3xl text-brand-red font-bold tracking-wide">¥15,000</span>
-            <span class="text-xs text-gray-400 ml-1 font-jp">(税込)</span>
-          </div>
-        </div>
+      <div class="w-16 h-16 rounded-2xl bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red mx-auto mb-6 text-2xl">
+        <i class="fa-solid fa-car-side"></i>
       </div>
-    </div>
-
-    <!-- 一般来場 / チケットセクション -->
-    <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden mb-8 shadow-xl">
-      <div class="bg-black/50 px-5 py-3.5 border-b border-white/10 flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-brand-red"></span>
-        <h2 class="text-white font-headline text-lg sm:text-xl tracking-wider uppercase font-bold">一般来場・その他</h2>
-      </div>
-
-      <div class="divide-y divide-white/5">
-        <!-- 項目 1 -->
-        <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-white/[0.02] transition">
-          <div>
-            <div class="text-white font-bold text-base sm:text-lg">一般入場チケット（前売）</div>
-            <div class="text-gray-400 text-xs sm:text-sm mt-0.5">高校生以上 / 1名</div>
-          </div>
-          <div class="text-left sm:text-right">
-            <span class="font-headline text-2xl sm:text-3xl text-white font-bold tracking-wide">¥2,500</span>
-            <span class="text-xs text-gray-400 ml-1 font-jp">(税込)</span>
-          </div>
-        </div>
-
-        <!-- 項目 2 -->
-        <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-white/[0.02] transition">
-          <div>
-            <div class="text-white font-bold text-base sm:text-lg">一般入場チケット（当日）</div>
-            <div class="text-gray-400 text-xs sm:text-sm mt-0.5">当日会場ゲートにて販売</div>
-          </div>
-          <div class="text-left sm:text-right">
-            <span class="font-headline text-2xl sm:text-3xl text-white font-bold tracking-wide">¥3,000</span>
-            <span class="text-xs text-gray-400 ml-1 font-jp">(税込)</span>
-          </div>
-        </div>
-
-        <!-- 項目 3 -->
-        <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-white/[0.02] transition">
-          <div>
-            <div class="text-white font-bold text-base sm:text-lg">一般駐車料金</div>
-            <div class="text-gray-400 text-xs sm:text-sm mt-0.5">一般来場者駐車場 / 1台1日</div>
-          </div>
-          <div class="text-left sm:text-right">
-            <span class="font-headline text-2xl sm:text-3xl text-white font-bold tracking-wide">¥1,000</span>
-            <span class="text-xs text-gray-400 ml-1 font-jp">(税込)</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 注意事項ボックス -->
-    <div class="p-4 sm:p-5 rounded-xl bg-brand-red/10 border-l-4 border-brand-red text-xs sm:text-sm text-gray-300 leading-relaxed space-y-1">
-      <p>※ 中学生以下は保護者同伴に限り入場無料です。</p>
-      <p>※ エントリー受付開始時期および詳細なレギュレーション・規約は追ってアナウンスいたします。</p>
+      <span class="inline-block bg-brand-red text-white text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+        STAY TUNED
+      </span>
+      <h2 class="font-headline text-3xl sm:text-5xl font-black text-white tracking-wider mb-4">
+        COMING SOON
+      </h2>
+      <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
+        エントリーのオンライン受付フォームは現在準備中です。
+      </p>
     </div>
 
   </main>
 
-  <!-- フッター -->
   <footer class="border-t border-white/10 bg-black/80 py-8 px-4 text-center text-xs text-gray-500">
     <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="font-headline text-2xl tracking-widest text-white">
