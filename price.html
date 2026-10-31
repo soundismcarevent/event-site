@@ -38,6 +38,7 @@
       color: #f3f4f6;
       font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
       overflow-x: hidden;
+      word-break: auto-phrase;
     }
     .halftone-bg {
       background-image: radial-gradient(rgba(255, 20, 56, 0.15) 1.5px, transparent 1.5px), radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
@@ -59,17 +60,24 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="halftone-bg relative min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
+<body class="halftone-bg relative min-h-screen selection:bg-brand-red selection:text-white flex flex-col justify-between">
 
   <div class="noise-overlay"></div>
 
   <!-- ナビゲーションバー -->
-  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/90 border-b border-white/10 px-3 sm:px-8 py-3 flex items-center justify-between">
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/90 border-b border-white/10 px-3 sm:px-8 py-2.5 flex items-center justify-between">
     <div class="flex items-center space-x-2 shrink-0">
-      <a href="index.html" class="font-headline tracking-wider text-xl sm:text-2xl font-black italic text-white flex items-center gap-1">
-        SOUND<span class="text-brand-red">-</span>ISM
+      <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 group">
+        <img 
+          src="images/logo.png" 
+          alt="SOUND-ISM" 
+          class="h-6 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105"
+          onerror="this.onerror=null; this.src='images/logo.PNG'; this.onerror=function(){this.src='images/logo.jpg'; this.onerror=function(){this.src='images/logo.JPG'; this.onerror=function(){this.src='images/IMG_0394.jpg';}};};"
+        />
+        <span class="text-brand-red font-tourney text-lg sm:text-2xl font-black italic tracking-wider drop-shadow-[0_0_10px_rgba(255,20,56,0.5)]">
+          2027
+        </span>
       </a>
-      <span class="bg-brand-red text-white text-[9px] sm:text-xs font-bold px-1.5 py-0.5 rounded tracking-widest uppercase">2027</span>
     </div>
     
     <nav class="flex items-center space-x-3 sm:space-x-5 overflow-x-auto no-scrollbar text-xs sm:text-base font-headline tracking-widest uppercase font-bold pl-3">
@@ -81,45 +89,238 @@
     </nav>
   </header>
 
-  <main class="flex-1 max-w-4xl w-full mx-auto px-4 pt-28 pb-16">
-    
-    <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-brand-red/40 text-brand-red text-xs font-bold tracking-widest uppercase mb-3">
-        PRICE LIST
+  <!-- メインコンテンツ -->
+  <main class="flex-grow pt-28 sm:pt-36 pb-16 px-4 max-w-4xl mx-auto w-full">
+    <!-- 見出し -->
+    <div class="border-t border-b border-white/10 py-3 mb-8 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <h1 class="font-headline text-3xl sm:text-4xl tracking-wider text-white">
+          ENTRY <span class="text-brand-red">PRICE</span>
+        </h1>
+        <span class="text-[11px] sm:text-xs font-bold text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded tracking-widest uppercase">
+          料金案内
+        </span>
       </div>
-      <h1 class="font-headline text-4xl sm:text-6xl font-black tracking-wider text-white">
-        ENTRY <span class="text-brand-red">PRICE</span>
-      </h1>
-      <p class="text-gray-400 text-xs sm:text-sm mt-2 font-jp">エントリー料金・各種カテゴリー料金表</p>
+      <span class="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">FEES & TICKETS</span>
     </div>
 
-    <!-- Coming Soon ボックス -->
-    <div class="bg-brand-card border border-brand-border rounded-2xl p-8 sm:p-14 text-center shadow-xl relative overflow-hidden">
-      <div class="absolute -right-10 -bottom-10 text-white/5 font-headline text-9xl pointer-events-none">
-        FEE
-      </div>
-      <div class="w-16 h-16 rounded-2xl bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red mx-auto mb-6 text-2xl">
-        <i class="fa-solid fa-ticket"></i>
-      </div>
-      <span class="inline-block bg-brand-red text-white text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4">
-        STAY TUNED
-      </span>
-      <h2 class="font-headline text-3xl sm:text-5xl font-black text-white tracking-wider mb-4">
-        COMING SOON
-      </h2>
-      <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
-        エントリー費用、一般来場料金などの詳細な料金設定は現在調整中です。決定次第順次公開いたします。
-      </p>
-    </div>
+    <!-- 料金案内セクション -->
+    <div class="space-y-8">
 
+      <!-- 1. 一般入場・同乗者・駐車 -->
+      <section class="bg-brand-card border border-brand-border rounded-2xl p-5 sm:p-7 shadow-xl">
+        <div class="flex items-center gap-2 mb-4 pb-2 border-b border-white/10">
+          <i class="fa-solid fa-users text-brand-red text-lg"></i>
+          <h2 class="text-lg sm:text-xl font-bold text-white">一般入場・同乗者</h2>
+        </div>
+
+        <div class="space-y-3">
+          <!-- 項目 1: 一般来場者 -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
+            <div>
+              <span class="text-white font-bold text-sm sm:text-base block">一般来場者</span>
+              <p class="text-gray-400 text-xs mt-0.5">当日イベント観覧自由</p>
+              <p class="text-brand-red text-[11px] font-bold mt-1">※当日現地にてお支払いください</p>
+            </div>
+            <div class="text-left sm:text-right shrink-0 mt-2 sm:mt-0">
+              <span class="text-xl sm:text-2xl font-black text-white font-mono">¥1,000</span>
+              <span class="text-xs text-gray-400 ml-1">/ 名 (税込)</span>
+            </div>
+          </div>
+
+          <!-- 項目 2: 同乗者 -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
+            <div>
+              <span class="text-white font-bold text-sm sm:text-base block">同乗者</span>
+              <p class="text-gray-400 text-xs mt-0.5">エントリー車両の同乗者向け</p>
+              <p class="text-brand-red text-[11px] font-bold mt-1">※当日現地にてお支払いください</p>
+            </div>
+            <div class="text-left sm:text-right shrink-0 mt-2 sm:mt-0">
+              <span class="text-xl sm:text-2xl font-black text-white font-mono">¥1,000</span>
+              <span class="text-xs text-gray-400 ml-1">/ 名 (税込)</span>
+            </div>
+          </div>
+
+          <!-- 項目 3: 駐車 -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
+            <div>
+              <span class="text-white font-bold text-sm sm:text-base block">駐車</span>
+              <p class="text-brand-red text-[11px] font-bold mt-1">※当日現地にてお支払いください</p>
+            </div>
+            <div class="text-left sm:text-right shrink-0 mt-2 sm:mt-0">
+              <span class="text-xl sm:text-2xl font-black text-white font-mono">¥500</span>
+              <span class="text-xs text-gray-400 ml-1">/ 台 (税込)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 車両エントリー -->
+      <section class="bg-brand-card border border-brand-border rounded-2xl p-5 sm:p-7 shadow-xl">
+        <div class="flex items-center gap-2 mb-4 pb-2 border-b border-white/10">
+          <i class="fa-solid fa-car text-brand-red text-lg"></i>
+          <h2 class="text-lg sm:text-xl font-bold text-white">車両エントリー</h2>
+        </div>
+
+        <div class="space-y-6">
+          
+          <!-- メインカテゴリー -->
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">メインカテゴリー</span>
+              <span class="text-xs text-gray-400">車両エントリーに必須となります</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 p-4 rounded-xl bg-black/40 border border-brand-red/40">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-white font-bold text-sm sm:text-base">一般エントリー</span>
+                  <span class="bg-brand-red text-white text-[9px] font-bold px-1.5 py-0.5 rounded">必須</span>
+                </div>
+                <p class="text-gray-400 text-xs mt-1">展示スペース 1枠 ＋ ドライバー入場料込</p>
+              </div>
+              <div class="text-left sm:text-right shrink-0 mt-2 sm:mt-0">
+                <span class="text-xl sm:text-2xl font-black text-brand-red font-mono">¥10,000</span>
+                <span class="text-xs text-gray-400 ml-1">/ 台 (税込)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- サブカテゴリー -->
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-white/10 text-gray-200 text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">サブカテゴリー</span>
+              <span class="text-xs text-gray-400">各種コンテスト・トーナメントへの追加エントリー</span>
+            </div>
+
+            <div class="space-y-3">
+              <!-- 音圧バトルトーナメント -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
+                <div>
+                  <span class="text-white font-bold text-sm sm:text-base block">音圧バトルトーナメント</span>
+                  <p class="text-gray-400 text-xs mt-0.5">1 on 1の音圧バトルトーナメント</p>
+                </div>
+                <div class="text-left sm:text-right shrink-0 mt-2 sm:mt-0">
+                  <span class="text-xl sm:text-2xl font-black text-white font-mono">¥5,000</span>
+                  <span class="text-xs text-gray-400 ml-1">/ 台 (税込)</span>
+                </div>
+              </div>
+
+              <!-- クールサウンドバトルトーナメント -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
+                <div>
+                  <span class="text-white font-bold text-sm sm:text-base block">クールサウンドバトルトーナメント</span>
+                  <p class="text-gray-500 text-xs mt-0.5">詳細後日公開</p>
+                </div>
+                <div class="text-left sm:text-right shrink-0 mt-2 sm:mt-0">
+                  <span class="text-xl sm:text-2xl font-black text-white font-mono">¥5,000</span>
+                  <span class="text-xs text-gray-400 ml-1">/ 台 (税込)</span>
+                </div>
+              </div>
+
+              <!-- アピールサウンドコンテスト -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
+                <div>
+                  <span class="text-white font-bold text-sm sm:text-base block">アピールサウンドコンテスト</span>
+                  <p class="text-gray-500 text-xs mt-0.5">詳細後日公開</p>
+                </div>
+                <div class="text-left sm:text-right shrink-0 mt-2 sm:mt-0">
+                  <span class="text-xl sm:text-2xl font-black text-white font-mono">¥5,000</span>
+                  <span class="text-xs text-gray-400 ml-1">/ 台 (税込)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3. メーカー・ショップ出展ブース -->
+      <section class="bg-brand-card border border-brand-border rounded-2xl p-5 sm:p-7 shadow-xl">
+        <div class="flex items-center gap-2 mb-4 pb-2 border-b border-white/10">
+          <i class="fa-solid fa-store text-brand-red text-lg"></i>
+          <h2 class="text-lg sm:text-xl font-bold text-white">メーカー・ショップ出展ブース</h2>
+        </div>
+
+        <div class="space-y-3">
+          <!-- ブース出展 -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
+            <div>
+              <span class="text-white font-bold text-sm sm:text-base block">ブース出展</span>
+              <p class="text-gray-400 text-xs mt-0.5">1小間（車両1台展示可・テント設営スペース付）</p>
+            </div>
+            <div class="text-left sm:text-right shrink-0 mt-2 sm:mt-0">
+              <span class="text-xl sm:text-2xl font-black text-white font-mono">¥10,000</span>
+              <span class="text-xs text-gray-400 ml-1">(税込)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 注意事項 -->
+      <div class="bg-black/40 border border-white/10 rounded-2xl p-4 sm:p-5 text-xs text-gray-400 space-y-1.5 leading-relaxed">
+        <div class="text-white font-bold mb-1 flex items-center gap-1.5">
+          <i class="fa-solid fa-triangle-exclamation text-brand-red"></i>
+          <span>注意事項</span>
+        </div>
+        <p>※ 富士スピードウェイの入場料が別途発生致します。</p>
+        <p>※ 料金やエントリー枠の仕様は予告なく変更となる場合がございます。最新情報は当サイトまたは公式LINEをご確認ください。</p>
+        <p>※ 車両エントリーは先着順・定員に達し次第受付終了となります。</p>
+      </div>
+
+      <!-- MC kenji（毛ん痔）注記セクション[cite: 8] -->
+      <div class="relative bg-brand-card border border-brand-border rounded-3xl p-5 sm:p-6 shadow-2xl flex flex-col sm:flex-row items-center gap-5 sm:gap-6 overflow-hidden">
+        <div class="absolute -right-16 -top-16 w-48 h-48 bg-brand-red/10 blur-3xl rounded-full pointer-events-none"></div>
+        
+        <!-- 切り抜き画像枠[cite: 8] -->
+        <div class="relative shrink-0 w-28 h-28 sm:w-36 sm:h-36 overflow-hidden bg-black/60 border border-white/15 rounded-full flex items-center justify-center p-1 shadow-[0_0_20px_rgba(255,20,56,0.2)]">
+          <img 
+            src="images/cutout-man.jpg" 
+            alt="MC kenji（毛ん痔）" 
+            class="w-full h-full object-cover object-top rounded-full"
+            onerror="this.onerror=null; this.src='images/cutout-man.JPG'; this.onerror=function(){this.src='images/S__27771043_0.jpg'; this.onerror=function(){this.src='images/S__27771043_0.JPG'; this.onerror=function(){this.src='images/cutout-man.png'; this.onerror=function(){this.src='images/cutout-man.PNG';}};};};"
+          />
+        </div>
+
+        <div class="flex-1 text-center sm:text-left">
+          <span class="inline-block bg-brand-red text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-widest uppercase mb-1.5 font-montserrat">Let's Party!</span>
+          <h3 class="text-lg sm:text-xl font-black text-white mb-2 tracking-wide">MC kenji（毛ん痔）</h3>
+          <p class="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-xl">
+            当日の一般入場・駐車のお支払いは現地にて現金でのお支払いとなりますのでお間違えなく！富士スピードウェイに直接お越しいただき、皆様で最高のサウンドを楽しもうぜ～！
+          </p>
+        </div>
+      </div>
+
+      <!-- 公式LINEボタン[cite: 1] -->
+      <div class="text-center pt-4">
+        <p class="text-xs sm:text-sm text-gray-400 mb-3">エントリーや出展に関するお問い合わせは公式LINEまで</p>
+        <a 
+          href="https://line.me/R/ti/p/@783ksfzr" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-[#06C755]/20 transition"
+        >
+          <i class="fa-brands fa-line text-lg"></i>
+          <span>公式LINEでお問い合わせ</span>
+        </a>
+      </div>
+
+    </div>
   </main>
 
-  <footer class="border-t border-white/10 bg-black/80 py-8 px-4 text-center text-xs text-gray-500">
-    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="font-headline text-2xl tracking-widest text-white">
-        SOUND<span class="text-brand-red">-</span>ISM <span class="text-brand-red font-tourney text-xl">2027</span>
+  <!-- フッター -->
+  <footer class="border-t border-white/10 bg-black/90 py-6 sm:py-8 px-4 text-center text-xs text-gray-500">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+      <div class="flex items-center gap-2">
+        <img 
+          src="images/logo.png" 
+          alt="SOUND-ISM" 
+          class="h-7 sm:h-8 w-auto object-contain"
+          onerror="this.onerror=null; this.src='images/logo.PNG'; this.onerror=function(){this.src='images/logo.jpg'; this.onerror=function(){this.src='images/logo.JPG'; this.onerror=function(){this.src='images/IMG_0394.jpg';}};};"
+        />
+        <span class="text-brand-red font-tourney text-xl sm:text-2xl font-black italic tracking-widest drop-shadow-[0_0_10px_rgba(255,20,56,0.5)]">2027</span>
       </div>
-      <p>© 2027 SOUND-ISM PROJECT. ALL RIGHTS RESERVED.</p>
+      <p class="text-[11px] sm:text-xs">© 2027 SOUND-ISM PROJECT. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 

@@ -38,6 +38,7 @@
       color: #f3f4f6;
       font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
       overflow-x: hidden;
+      word-break: auto-phrase;
     }
     .halftone-bg {
       background-image: radial-gradient(rgba(255, 20, 56, 0.15) 1.5px, transparent 1.5px), radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
@@ -59,17 +60,24 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="halftone-bg relative min-h-screen flex flex-col selection:bg-brand-red selection:text-white">
+<body class="halftone-bg relative min-h-screen selection:bg-brand-red selection:text-white flex flex-col justify-between">
 
   <div class="noise-overlay"></div>
 
   <!-- ナビゲーションバー -->
-  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/90 border-b border-white/10 px-3 sm:px-8 py-3 flex items-center justify-between">
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/90 border-b border-white/10 px-3 sm:px-8 py-2.5 flex items-center justify-between">
     <div class="flex items-center space-x-2 shrink-0">
-      <a href="index.html" class="font-headline tracking-wider text-xl sm:text-2xl font-black italic text-white flex items-center gap-1">
-        SOUND<span class="text-brand-red">-</span>ISM
+      <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 group">
+        <img 
+          src="images/logo.png" 
+          alt="SOUND-ISM" 
+          class="h-6 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105"
+          onerror="this.onerror=null; this.src='images/logo.PNG'; this.onerror=function(){this.src='images/logo.jpg'; this.onerror=function(){this.src='images/logo.JPG'; this.onerror=function(){this.src='images/IMG_0394.jpg';}};};"
+        />
+        <span class="text-brand-red font-tourney text-lg sm:text-2xl font-black italic tracking-wider drop-shadow-[0_0_10px_rgba(255,20,56,0.5)]">
+          2027
+        </span>
       </a>
-      <span class="bg-brand-red text-white text-[9px] sm:text-xs font-bold px-1.5 py-0.5 rounded tracking-widest uppercase">2027</span>
     </div>
     
     <nav class="flex items-center space-x-3 sm:space-x-5 overflow-x-auto no-scrollbar text-xs sm:text-base font-headline tracking-widest uppercase font-bold pl-3">
@@ -81,68 +89,100 @@
     </nav>
   </header>
 
-  <main class="flex-1 max-w-4xl w-full mx-auto px-4 pt-28 pb-16">
-    
-    <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-brand-red/40 text-brand-red text-xs font-bold tracking-widest uppercase mb-3">
-        LATEST INFORMATION
+  <!-- メインコンテンツ -->
+  <main class="flex-grow pt-28 sm:pt-36 pb-16 px-4 max-w-4xl mx-auto w-full">
+    <div class="border-t border-b border-white/10 py-3 mb-8 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <h1 class="font-headline text-3xl sm:text-4xl tracking-wider text-white">
+          <span class="text-brand-red">NEWS</span> & TOPICS
+        </h1>
       </div>
-      <h1 class="font-headline text-4xl sm:text-6xl font-black tracking-wider text-white">
-        OFFICIAL <span class="text-brand-red">NEWS</span>
-      </h1>
-      <p class="text-gray-400 text-xs sm:text-sm mt-2 font-jp">イベントに関する最新情報・お知らせ一覧</p>
+      <span class="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">LATEST INFORMATION</span>
     </div>
 
-    <!-- ==========================================
-         ▼ 記事一覧エリア（新しい記事は一番上に追加）
-         ========================================== -->
-    <div class="space-y-6">
+    <!-- お知らせリスト -->
+    <div class="space-y-5">
 
-      <!-- ▼ 【追加例：画像付きの記事パターン】 -->
-      <!--
-      <article class="bg-brand-card border border-brand-border hover:border-brand-red/50 rounded-2xl p-5 sm:p-7 shadow-xl transition">
-        <div class="flex flex-wrap items-center gap-3 mb-3 text-xs">
-          <span class="bg-brand-red text-white font-bold px-2.5 py-0.5 rounded tracking-wider uppercase font-mono">UPDATE</span>
-          <time class="text-gray-400 font-mono">2026.11.01</time>
+      <!-- 2026.11.02 ENTRY PRICE 公開 -->
+      <article class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden group">
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class="text-brand-red font-mono font-bold text-xs">2026.11.02</span>
+          <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">INFO</span>
         </div>
-        <h2 class="text-lg sm:text-2xl font-bold text-white mb-3">
-          記事のタイトル（画像付き）
-        </h2>
+        <h2 class="text-lg sm:text-xl font-bold text-white mb-2">各種エントリー＆入場料金（PRICE）を公開しました</h2>
+        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
+          一般来場者・同乗者・駐車料金をはじめ、外向きオーディオ一般エントリー、音圧バトルトーナメント等の各種サブカテゴリー、メーカー・ショップブース出展の料金詳細を公開いたしました。詳細は「PRICE」ページをご確認ください。
+        </p>
+        <div class="text-right">
+          <a href="price.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-red hover:text-white transition group-hover:translate-x-1">
+            <span>料金一覧（PRICE）はこちら</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 2026.11.01 出店情報 -->
+      <article class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden group">
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class="text-brand-red font-mono font-bold text-xs">2026.11.01</span>
+          <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">INFO</span>
+        </div>
+        <h2 class="text-lg sm:text-xl font-bold text-white mb-3">出店情報を公開しました</h2>
         
-        <div class="mb-4 rounded-xl overflow-hidden border border-white/10 max-w-xl">
-          <img src="news-image.jpg" alt="お知らせ画像" class="w-full h-auto object-cover">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-black/40 p-4 rounded-xl border border-white/5 mb-3">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white p-1 shrink-0 flex items-center justify-center border border-white/80">
+            <img 
+              src="images/booth-miyavi.png" 
+              alt="炭焼き酒場 雅（MIYAVI）" 
+              class="w-full h-full object-contain rounded-full"
+              onerror="this.onerror=null; this.src='images/booth-miyavi.jpg'; this.onerror=function(){this.src='images/booth-miyavi.PNG'; this.onerror=function(){this.src='images/IMG_0413.PNG';}}; "
+            />
+          </div>
+          <div class="flex-1">
+            <div class="text-xs font-bold text-brand-red mb-0.5">FOOD BOOTH 出店決定</div>
+            <div class="text-white font-bold text-base mb-1">炭焼き酒場 雅 (MIYAVI)</div>
+            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+              SOUND-ISM 2027 当日のフードブース第1弾として、埼玉県戸田市の人気店「炭焼き酒場 雅（MIYAVI）」様の出店が決定いたしました！極上の炭火焼き鳥を会場にてお楽しみいただけます。詳細はトップページの出店情報エリアをご確認ください。
+            </p>
+          </div>
         </div>
 
-        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-          ここに記事本文を記述します。
-        </p>
+        <div class="text-right">
+          <a href="index.html#booth" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-red hover:text-white transition group-hover:translate-x-1">
+            <span>出店詳細はこちら</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
       </article>
-      -->
 
-      <!-- ▼ 【基本記事：画像なしパターン】 -->
-      <article class="bg-brand-card border border-brand-border hover:border-brand-red/50 rounded-2xl p-5 sm:p-7 shadow-xl transition">
-        <div class="flex flex-wrap items-center gap-3 mb-3 text-xs">
-          <span class="bg-brand-red text-white font-bold px-2.5 py-0.5 rounded tracking-wider uppercase font-mono">INFO</span>
-          <time class="text-gray-400 font-mono">2026.10.30</time>
+      <!-- 2026.10.30 公式サイト公開 -->
+      <article class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl p-5 sm:p-6 shadow-xl">
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class="text-brand-red font-mono font-bold text-xs">2026.10.30</span>
+          <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">INFO</span>
         </div>
-        <h2 class="text-lg sm:text-2xl font-bold text-white mb-3 hover:text-brand-red transition">
-          SOUND-ISM 2027 公式サイトを公開しました
-        </h2>
-        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-          2027年2月14日(日)に富士スピードウェイにて開催される「SOUND-ISM 2027」の公式WEBサイトを公開いたしました。各種エントリー詳細、参加料金表、出展情報などは随時こちらのNEWSにてお知らせいたします。
+        <h2 class="text-lg sm:text-xl font-bold text-white mb-2">SOUND-ISM 2027 公式サイトを公開しました</h2>
+        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+          富士スピードウェイにて2027年2月14日(日)に開催される「SOUND-ISM 2027」の公式サイトを開設いたしました。エントリー概要やブース出展等の詳細情報は順次こちらのNEWSにて発表いたします。
         </p>
       </article>
 
     </div>
-
   </main>
 
-  <footer class="border-t border-white/10 bg-black/80 py-8 px-4 text-center text-xs text-gray-500">
-    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="font-headline text-2xl tracking-widest text-white">
-        SOUND<span class="text-brand-red">-</span>ISM <span class="text-brand-red font-tourney text-xl">2027</span>
+  <!-- フッター -->
+  <footer class="border-t border-white/10 bg-black/90 py-6 sm:py-8 px-4 text-center text-xs text-gray-500">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+      <div class="flex items-center gap-2">
+        <img 
+          src="images/logo.png" 
+          alt="SOUND-ISM" 
+          class="h-7 sm:h-8 w-auto object-contain"
+          onerror="this.onerror=null; this.src='images/logo.PNG'; this.onerror=function(){this.src='images/logo.jpg'; this.onerror=function(){this.src='images/logo.JPG'; this.onerror=function(){this.src='images/IMG_0394.jpg';}};};"
+        />
+        <span class="text-brand-red font-tourney text-xl sm:text-2xl font-black italic tracking-widest drop-shadow-[0_0_10px_rgba(255,20,56,0.5)]">2027</span>
       </div>
-      <p>© 2027 SOUND-ISM PROJECT. ALL RIGHTS RESERVED.</p>
+      <p class="text-[11px] sm:text-xs">© 2027 SOUND-ISM PROJECT. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 

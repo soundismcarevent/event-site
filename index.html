@@ -49,7 +49,7 @@
       color: #f3f4f6;
       font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
       overflow-x: hidden;
-      word-break: auto-phrase; /* 日本語の文節で自然に折り返し */
+      word-break: auto-phrase;
     }
 
     #opening-splash {
@@ -206,7 +206,7 @@
       </div>
     </div>
 
-    <!-- 日程＆ロケーション メイン表示（スマホで自然に綺麗に並ぶよう調整） -->
+    <!-- 日程＆ロケーション メイン表示 -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-6 mt-3 sm:mt-4 text-sm sm:text-base md:text-lg font-bold tracking-wide w-full max-w-lg">
       <div class="w-full sm:w-auto flex items-center justify-center gap-2 bg-black/85 px-4 sm:px-5 py-2.5 rounded-xl border border-white/15 backdrop-blur-md whitespace-nowrap">
         <i class="fa-regular fa-calendar-days text-brand-red text-lg sm:text-xl"></i>
@@ -244,14 +244,14 @@
       </div>
     </div>
 
-    <!-- アクションボタン群（スマホで幅一杯かつタップしやすく） -->
+    <!-- アクションボタン群 -->
     <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
       <a href="news.html" class="w-full sm:w-auto bg-black/75 hover:bg-black/90 border border-white/25 text-white font-bold px-6 py-3.5 rounded-xl transition flex items-center justify-center gap-2 tracking-wider text-sm sm:text-base backdrop-blur-md">
         <i class="fa-solid fa-bullhorn text-brand-red"></i>
         <span>最新のお知らせ</span>
       </a>
-      <a href="entry.html" class="w-full sm:w-auto bg-brand-red hover:bg-red-600 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-red/40 flex items-center justify-center gap-2 tracking-wider text-sm sm:text-base group">
-        <span>エントリー情報</span>
+      <a href="price.html" class="w-full sm:w-auto bg-brand-red hover:bg-red-600 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-red/40 flex items-center justify-center gap-2 tracking-wider text-sm sm:text-base group">
+        <span>料金・エントリー情報</span>
         <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
       </a>
     </div>
@@ -283,7 +283,6 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-      
       <!-- 1. TOP STAGE -->
       <div class="bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-5 sm:p-6 flex items-center justify-center min-h-[120px] sm:min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
         <img 
@@ -313,10 +312,9 @@
           onerror="this.onerror=null; this.src='images/organizer-quadcontrol.PNG'; this.onerror=function(){this.src='images/IMG_0399.PNG'; this.onerror=function(){this.src='images/IMG_0399.png';};};"
         />
       </div>
-
     </div>
 
-    <!-- 事務局（SECRETARIAT / OFFICE）セクション -->
+    <!-- 事務局セクション -->
     <div class="mt-8 sm:mt-10">
       <div class="border-t border-b border-white/10 py-3 mb-5 sm:mb-6 flex items-center justify-between">
         <div class="flex items-center gap-2.5 sm:gap-3">
@@ -353,7 +351,6 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-      
       <!-- CARD 1 -->
       <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl overflow-hidden shadow-xl flex flex-col">
         <div class="h-44 sm:h-48 w-full overflow-hidden relative">
@@ -407,7 +404,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -430,8 +426,6 @@
       <div class="absolute -right-20 -top-20 w-60 h-60 bg-brand-red/10 blur-[80px] rounded-full pointer-events-none"></div>
 
       <div class="flex flex-col md:flex-row items-center md:items-start gap-5 sm:gap-8 relative z-10">
-        
-        <!-- ロゴ画像 -->
         <div class="shrink-0">
           <div class="w-32 h-32 sm:w-44 sm:h-44 rounded-full bg-white p-2 sm:p-2.5 shadow-xl flex items-center justify-center border-2 border-white/90 group-hover:scale-105 transition duration-300">
             <img 
@@ -443,9 +437,7 @@
           </div>
         </div>
 
-        <!-- 店舗情報テキスト -->
         <div class="flex-1 w-full text-left">
-          
           <div class="flex items-center gap-2 mb-2">
             <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase font-headline">FOOD BOOTH</span>
             <span class="text-xs text-gray-400 font-mono tracking-wider">炭火焼き鳥・酒場</span>
@@ -500,7 +492,6 @@
             ※ 営業時間・定休日は変更となる場合がございますので、ご来店前に店舗にご確認ください。
           </p>
         </div>
-
       </div>
     </div>
   </section>
@@ -508,8 +499,6 @@
   <!-- 会場アクセスセクション -->
   <section id="venue" class="max-w-5xl mx-auto px-4 py-8">
     <div class="bg-brand-card border border-brand-border rounded-3xl overflow-hidden shadow-2xl">
-      
-      <!-- ブース幕写真バナー -->
       <div class="h-40 sm:h-64 w-full relative overflow-hidden">
         <img src="images/S__27754596_0.jpg" alt="Fuji Speedway Venue" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-black/40"></div>
@@ -566,12 +555,11 @@
             当イベント特設会場のゲート番号、搬入経路、駐車場割当は後日案内を掲載します。
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- 運営事務局 お問い合わせセクション -->
+  <!-- 運営事務局 お問い合わせセクション[cite: 1] -->
   <section id="contact" class="max-w-5xl mx-auto px-4 pt-4 pb-14 sm:pb-16">
     <div class="bg-brand-card border border-brand-red/30 rounded-3xl p-5 sm:p-10 shadow-2xl relative overflow-hidden">
       <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-red/10 blur-[80px] rounded-full pointer-events-none"></div>
@@ -581,7 +569,6 @@
         <span class="text-[11px] sm:text-xs font-headline tracking-widest text-brand-red uppercase font-bold">CONTACT / OFFICIAL LINE</span>
       </div>
 
-      <!-- タイトル：スマホでも綺麗に収まるよう配置 -->
       <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-2.5 sm:mb-3">
         <img 
           src="images/logo.png" 
@@ -599,7 +586,6 @@
         エントリーに関するご質問、ブース出展・協賛スポンサーに関するお問い合わせは、下記の「SOUND-ISM 公式LINE」よりお気軽にご連絡ください。
       </p>
 
-      <!-- 公式LINE 友だち追加ボタン（スマホでのタップ性と表示を最適化） -->
       <div class="max-w-md mx-auto">
         <a 
           href="https://line.me/R/ti/p/@783ksfzr" 
