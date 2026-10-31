@@ -49,6 +49,7 @@
       color: #f3f4f6;
       font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
       overflow-x: hidden;
+      word-break: auto-phrase; /* 日本語の文節で自然に折り返し */
     }
 
     #opening-splash {
@@ -100,10 +101,6 @@
       background-size: 200px 200px;
     }
 
-    .neon-glow {
-      text-shadow: 0 0 25px rgba(255, 20, 56, 0.65), 0 0 50px rgba(255, 20, 56, 0.3);
-    }
-
     .eq-bar {
       animation: eqBounce 1.2s ease-in-out infinite alternate;
       transform-origin: bottom;
@@ -122,7 +119,7 @@
 
   <!-- オープニング スプラッシュスクリーン -->
   <div id="opening-splash" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#060608] px-4 overflow-hidden">
-    <div class="absolute w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-red/25 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] bg-brand-red/25 blur-[120px] rounded-full pointer-events-none"></div>
 
     <div class="opening-logo-anim relative w-full max-w-lg flex flex-col items-center">
       <div class="relative w-full rounded-2xl p-2 bg-gradient-to-b from-white/10 to-transparent border border-white/15 backdrop-blur-md shadow-[0_0_50px_rgba(255,20,56,0.3)]">
@@ -152,14 +149,14 @@
   <!-- ナビゲーションバー -->
   <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/90 border-b border-white/10 px-3 sm:px-8 py-2.5 flex items-center justify-between">
     <div class="flex items-center space-x-2 shrink-0">
-      <a href="index.html" class="flex items-center gap-2 group">
+      <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 group">
         <img 
           src="images/logo.png" 
           alt="SOUND-ISM" 
-          class="h-7 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105"
+          class="h-6 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105"
           onerror="this.onerror=null; this.src='images/logo.PNG'; this.onerror=function(){this.src='images/logo.jpg'; this.onerror=function(){this.src='images/logo.JPG'; this.onerror=function(){this.src='images/IMG_0394.jpg';}};};"
         />
-        <span class="text-brand-red font-tourney text-xl sm:text-2xl font-black italic tracking-wider drop-shadow-[0_0_10px_rgba(255,20,56,0.5)]">
+        <span class="text-brand-red font-tourney text-lg sm:text-2xl font-black italic tracking-wider drop-shadow-[0_0_10px_rgba(255,20,56,0.5)]">
           2027
         </span>
       </a>
@@ -175,22 +172,22 @@
   </header>
 
   <!-- ヒーローセクション -->
-  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden flex flex-col items-center justify-center text-center px-4">
+  <section class="relative pt-28 pb-16 sm:pt-40 sm:pb-28 overflow-hidden flex flex-col items-center justify-center text-center px-4">
     
     <div class="absolute inset-0 -z-20 overflow-hidden">
       <img src="images/S__27754595_0.jpg" alt="" class="w-full h-full object-cover object-center opacity-65 scale-100">
       <div class="absolute inset-0 bg-gradient-to-b from-[#08080a]/85 via-[#08080a]/55 to-[#08080a]"></div>
     </div>
 
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[650px] h-[350px] md:h-[650px] bg-brand-red/20 blur-[130px] rounded-full -z-10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[650px] h-[300px] sm:h-[650px] bg-brand-red/20 blur-[130px] rounded-full -z-10 pointer-events-none"></div>
 
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/75 border border-brand-red/50 text-brand-red text-xs md:text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-md animate-pulse-fast">
-      <span class="w-2 h-2 rounded-full bg-brand-red"></span>
-      THE NEXT-LEVEL CAR SOUND & BASS CULTURE FEST
+    <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-black/75 border border-brand-red/50 text-brand-red text-[11px] sm:text-sm font-bold tracking-wider sm:tracking-widest uppercase mb-6 backdrop-blur-md animate-pulse-fast leading-snug">
+      <span class="w-2 h-2 rounded-full bg-brand-red shrink-0"></span>
+      <span class="whitespace-nowrap sm:whitespace-normal">THE NEXT-LEVEL CAR SOUND & BASS FEST</span>
     </div>
 
-    <!-- メインロゴ領域（スマホでも確実に100%幅で収まるよう設定） -->
-    <div class="relative w-full max-w-3xl mx-auto px-2 mb-4 group flex flex-col items-center">
+    <!-- メインロゴ領域 -->
+    <div class="relative w-full max-w-3xl mx-auto px-1 sm:px-2 mb-4 group flex flex-col items-center">
       <div class="relative w-full rounded-2xl p-2 bg-gradient-to-b from-black/85 to-black/50 border border-white/20 backdrop-blur-md shadow-2xl overflow-hidden flex justify-center items-center">
         <img 
           src="images/hero-logo.PNG" 
@@ -201,118 +198,118 @@
       </div>
 
       <div class="mt-4 flex items-center justify-center gap-3">
-        <div class="h-0.5 w-12 bg-gradient-to-r from-transparent to-brand-red"></div>
+        <div class="h-0.5 w-8 sm:w-12 bg-gradient-to-r from-transparent to-brand-red"></div>
         <span class="font-tourney text-4xl sm:text-6xl md:text-7xl font-black italic tracking-widest text-white drop-shadow-[0_0_15px_#ff1438]">
           2027
         </span>
-        <div class="h-0.5 w-12 bg-gradient-to-l from-transparent to-brand-red"></div>
+        <div class="h-0.5 w-8 sm:w-12 bg-gradient-to-l from-transparent to-brand-red"></div>
       </div>
     </div>
 
-    <!-- 日程＆ロケーション メイン表示 -->
-    <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-4 text-sm sm:text-base md:text-lg font-bold tracking-wide">
-      <div class="flex items-center gap-2 bg-black/85 px-5 py-2.5 rounded-xl border border-white/15 backdrop-blur-md">
-        <i class="fa-regular fa-calendar-days text-brand-red text-xl"></i>
+    <!-- 日程＆ロケーション メイン表示（スマホで自然に綺麗に並ぶよう調整） -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-6 mt-3 sm:mt-4 text-sm sm:text-base md:text-lg font-bold tracking-wide w-full max-w-lg">
+      <div class="w-full sm:w-auto flex items-center justify-center gap-2 bg-black/85 px-4 sm:px-5 py-2.5 rounded-xl border border-white/15 backdrop-blur-md whitespace-nowrap">
+        <i class="fa-regular fa-calendar-days text-brand-red text-lg sm:text-xl"></i>
         <span class="text-white font-montserrat">2027.02.14 <span class="text-brand-red">SUN</span></span>
       </div>
-      <div class="flex items-center gap-2 bg-black/85 px-5 py-2.5 rounded-xl border border-white/15 backdrop-blur-md">
-        <i class="fa-solid fa-flag-checkered text-brand-red text-xl"></i>
+      <div class="w-full sm:w-auto flex items-center justify-center gap-2 bg-black/85 px-4 sm:px-5 py-2.5 rounded-xl border border-white/15 backdrop-blur-md whitespace-nowrap">
+        <i class="fa-solid fa-flag-checkered text-brand-red text-lg sm:text-xl"></i>
         <span class="text-gray-200">静岡県 富士スピードウェイ</span>
       </div>
     </div>
 
     <!-- カウントダウンタイマー -->
-    <div class="w-full max-w-xl mt-10 p-5 rounded-2xl bg-black/85 border border-brand-red/40 backdrop-blur-md shadow-[0_0_30px_rgba(255,20,56,0.2)]">
-      <div class="text-xs uppercase tracking-[0.3em] text-gray-400 font-bold mb-3 flex items-center justify-center gap-2">
+    <div class="w-full max-w-xl mt-8 sm:mt-10 p-4 sm:p-5 rounded-2xl bg-black/85 border border-brand-red/40 backdrop-blur-md shadow-[0_0_30px_rgba(255,20,56,0.2)]">
+      <div class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-bold mb-2.5 flex items-center justify-center gap-2 whitespace-nowrap">
         <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
         Count Down to 2027.02.14
       </div>
       <div class="grid grid-cols-4 gap-2 sm:gap-4 font-headline text-center">
         <div class="bg-white/5 p-2 sm:p-3 rounded-lg border border-white/5">
-          <span id="cd-days" class="text-3xl sm:text-5xl font-black text-white block">---</span>
-          <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">DAYS</span>
+          <span id="cd-days" class="text-2xl sm:text-5xl font-black text-white block">---</span>
+          <span class="text-[9px] sm:text-xs text-gray-400 tracking-wider">DAYS</span>
         </div>
         <div class="bg-white/5 p-2 sm:p-3 rounded-lg border border-white/5">
-          <span id="cd-hours" class="text-3xl sm:text-5xl font-black text-brand-red block">--</span>
-          <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">HOURS</span>
+          <span id="cd-hours" class="text-2xl sm:text-5xl font-black text-brand-red block">--</span>
+          <span class="text-[9px] sm:text-xs text-gray-400 tracking-wider">HOURS</span>
         </div>
         <div class="bg-white/5 p-2 sm:p-3 rounded-lg border border-white/5">
-          <span id="cd-minutes" class="text-3xl sm:text-5xl font-black text-white block">--</span>
-          <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">MINUTES</span>
+          <span id="cd-minutes" class="text-2xl sm:text-5xl font-black text-white block">--</span>
+          <span class="text-[9px] sm:text-xs text-gray-400 tracking-wider">MINUTES</span>
         </div>
         <div class="bg-white/5 p-2 sm:p-3 rounded-lg border border-white/5">
-          <span id="cd-seconds" class="text-3xl sm:text-5xl font-black text-brand-red block">--</span>
-          <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">SECONDS</span>
+          <span id="cd-seconds" class="text-2xl sm:text-5xl font-black text-brand-red block">--</span>
+          <span class="text-[9px] sm:text-xs text-gray-400 tracking-wider">SECONDS</span>
         </div>
       </div>
     </div>
 
-    <!-- アクションボタン群 -->
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-      <a href="news.html" class="bg-black/75 hover:bg-black/90 border border-white/25 text-white font-bold px-6 py-3.5 rounded-xl transition flex items-center gap-2 tracking-wider text-sm sm:text-base backdrop-blur-md">
+    <!-- アクションボタン群（スマホで幅一杯かつタップしやすく） -->
+    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
+      <a href="news.html" class="w-full sm:w-auto bg-black/75 hover:bg-black/90 border border-white/25 text-white font-bold px-6 py-3.5 rounded-xl transition flex items-center justify-center gap-2 tracking-wider text-sm sm:text-base backdrop-blur-md">
         <i class="fa-solid fa-bullhorn text-brand-red"></i>
-        最新のお知らせ
+        <span>最新のお知らせ</span>
       </a>
-      <a href="entry.html" class="bg-brand-red hover:bg-red-600 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-red/40 flex items-center gap-2 tracking-wider text-sm sm:text-base group">
+      <a href="entry.html" class="w-full sm:w-auto bg-brand-red hover:bg-red-600 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-brand-red/40 flex items-center justify-center gap-2 tracking-wider text-sm sm:text-base group">
         <span>エントリー情報</span>
         <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
       </a>
     </div>
 
     <!-- 擬似イコライザー装飾 -->
-    <div class="flex items-end justify-center gap-1.5 h-10 mt-12 opacity-85">
-      <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.1s;"></span>
-      <span class="eq-bar w-1.5 bg-white rounded-t" style="animation-delay: 0.4s;"></span>
-      <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.2s;"></span>
-      <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.6s;"></span>
-      <span class="eq-bar w-1.5 bg-white rounded-t" style="animation-delay: 0.3s;"></span>
-      <span class="eq-bar w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.5s;"></span>
-      <span class="eq-bar w-1.5 bg-white rounded-t" style="animation-delay: 0.15s;"></span>
+    <div class="flex items-end justify-center gap-1.5 h-8 sm:h-10 mt-8 sm:mt-12 opacity-85">
+      <span class="eq-bar w-1 sm:w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.1s;"></span>
+      <span class="eq-bar w-1 sm:w-1.5 bg-white rounded-t" style="animation-delay: 0.4s;"></span>
+      <span class="eq-bar w-1 sm:w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.2s;"></span>
+      <span class="eq-bar w-1 sm:w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.6s;"></span>
+      <span class="eq-bar w-1 sm:w-1.5 bg-white rounded-t" style="animation-delay: 0.3s;"></span>
+      <span class="eq-bar w-1 sm:w-1.5 bg-brand-red rounded-t" style="animation-delay: 0.5s;"></span>
+      <span class="eq-bar w-1 sm:w-1.5 bg-white rounded-t" style="animation-delay: 0.15s;"></span>
     </div>
   </section>
 
   <!-- 主催（ORGANIZER）セクション -->
-  <section class="max-w-5xl mx-auto px-4 pt-10 pb-4">
-    <div class="border-t border-b border-white/10 py-3 mb-8 flex items-center justify-between">
-      <div class="flex items-center gap-3">
+  <section class="max-w-5xl mx-auto px-4 pt-8 pb-4">
+    <div class="border-t border-b border-white/10 py-3 mb-6 sm:mb-8 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 sm:gap-3">
         <h2 class="font-headline text-2xl md:text-3xl tracking-wider text-white">
           <span class="text-brand-red">ORGANIZER</span>
         </h2>
-        <span class="text-xs font-bold text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded tracking-widest uppercase">
+        <span class="text-[11px] sm:text-xs font-bold text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded tracking-widest uppercase">
           主催
         </span>
       </div>
-      <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">OFFICIAL EVENT HOSTS</span>
+      <span class="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">OFFICIAL EVENT HOSTS</span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
       
       <!-- 1. TOP STAGE -->
-      <div class="bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-6 flex items-center justify-center min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
+      <div class="bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-5 sm:p-6 flex items-center justify-center min-h-[120px] sm:min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
         <img 
           src="images/organizer-topstage.png" 
           alt="TOP STAGE" 
-          class="max-h-16 w-auto max-w-full object-contain group-hover:scale-105 transition duration-300"
+          class="max-h-14 sm:max-h-16 w-auto max-w-full object-contain group-hover:scale-105 transition duration-300"
           onerror="this.onerror=null; this.src='images/organizer-topstage.PNG'; this.onerror=function(){this.src='images/IMG_0397.PNG'; this.onerror=function(){this.src='images/IMG_0397.png';};};"
         />
       </div>
 
       <!-- 2. East Blast -->
-      <div class="bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-6 flex items-center justify-center min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
+      <div class="bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-5 sm:p-6 flex items-center justify-center min-h-[120px] sm:min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
         <img 
           src="images/organizer-eastblast.png" 
           alt="East Blast" 
-          class="max-h-16 w-auto max-w-full object-contain group-hover:scale-105 transition duration-300"
+          class="max-h-14 sm:max-h-16 w-auto max-w-full object-contain group-hover:scale-105 transition duration-300"
           onerror="this.onerror=null; this.src='images/organizer-eastblast.PNG'; this.onerror=function(){this.src='images/IMG_0398.PNG'; this.onerror=function(){this.src='images/IMG_0398.png';};};"
         />
       </div>
 
       <!-- 3. QUAD CONTROL -->
-      <div class="bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-6 flex items-center justify-center min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
+      <div class="bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-5 sm:p-6 flex items-center justify-center min-h-[120px] sm:min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
         <img 
           src="images/organizer-quadcontrol.png" 
           alt="QUAD CONTROL" 
-          class="max-h-16 w-auto max-w-full object-contain group-hover:scale-105 transition duration-300"
+          class="max-h-14 sm:max-h-16 w-auto max-w-full object-contain group-hover:scale-105 transition duration-300"
           onerror="this.onerror=null; this.src='images/organizer-quadcontrol.PNG'; this.onerror=function(){this.src='images/IMG_0399.PNG'; this.onerror=function(){this.src='images/IMG_0399.png';};};"
         />
       </div>
@@ -320,25 +317,25 @@
     </div>
 
     <!-- 事務局（SECRETARIAT / OFFICE）セクション -->
-    <div class="mt-10">
-      <div class="border-t border-b border-white/10 py-3 mb-6 flex items-center justify-between">
-        <div class="flex items-center gap-3">
+    <div class="mt-8 sm:mt-10">
+      <div class="border-t border-b border-white/10 py-3 mb-5 sm:mb-6 flex items-center justify-between">
+        <div class="flex items-center gap-2.5 sm:gap-3">
           <h3 class="font-headline text-xl md:text-2xl tracking-wider text-white">
             <span class="text-brand-red">SECRETARIAT</span>
           </h3>
-          <span class="text-xs font-bold text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded tracking-widest uppercase">
+          <span class="text-[11px] sm:text-xs font-bold text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded tracking-widest uppercase">
             事務局
           </span>
         </div>
-        <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">EVENT OFFICE</span>
+        <span class="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">EVENT OFFICE</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="md:col-start-2 bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-6 flex items-center justify-center min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
+        <div class="md:col-start-2 bg-white border border-white/80 hover:border-brand-red transition duration-300 rounded-2xl p-5 sm:p-6 flex items-center justify-center min-h-[120px] sm:min-h-[140px] shadow-lg hover:shadow-[0_0_20px_rgba(255,20,56,0.3)] group">
           <img 
             src="images/organizer-dept.png" 
             alt="DEPT." 
-            class="max-h-12 w-auto max-w-[70%] object-contain group-hover:scale-105 transition duration-300"
+            class="max-h-11 sm:max-h-12 w-auto max-w-[70%] object-contain group-hover:scale-105 transition duration-300"
             onerror="this.onerror=null; this.src='images/organizer-dept.PNG'; this.onerror=function(){this.src='images/IMG_0401.PNG'; this.onerror=function(){this.src='images/IMG_0401.png';};};"
           />
         </div>
@@ -348,27 +345,27 @@
 
   <!-- イベントスペック・概要 -->
   <section class="max-w-5xl mx-auto px-4 py-8">
-    <div class="border-t border-b border-white/10 py-4 mb-10 flex items-center justify-between">
-      <h2 class="font-headline text-3xl md:text-4xl tracking-wider text-white">
+    <div class="border-t border-b border-white/10 py-3 sm:py-4 mb-8 sm:mb-10 flex items-center justify-between">
+      <h2 class="font-headline text-2xl sm:text-3xl md:text-4xl tracking-wider text-white">
         EVENT <span class="text-brand-red">OVERVIEW</span>
       </h2>
-      <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">OFFICIAL SPEC // 2027</span>
+      <span class="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">OFFICIAL SPEC // 2027</span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
       
       <!-- CARD 1 -->
       <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl overflow-hidden shadow-xl flex flex-col">
-        <div class="h-48 w-full overflow-hidden relative">
+        <div class="h-44 sm:h-48 w-full overflow-hidden relative">
           <img src="images/S__27754601_0.jpg" alt="Schedule" class="w-full h-full object-cover hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
           <span class="absolute top-3 left-3 bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase font-headline">01 // DATE</span>
         </div>
-        <div class="p-6 flex-1 flex flex-col justify-between">
+        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
           <div>
-            <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Schedule</div>
-            <h3 class="text-xl font-black text-white mb-2">2027年2月14日 (日)</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">
+            <div class="text-[11px] sm:text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Schedule</div>
+            <h3 class="text-lg sm:text-xl font-black text-white mb-2 whitespace-nowrap">2027年2月14日 (日)</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
               真冬の空気に響き渡る極限の重低音。タイムスケジュールや開場・搬入時間の詳細は順次公開予定です。
             </p>
           </div>
@@ -377,16 +374,16 @@
 
       <!-- CARD 2 -->
       <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl overflow-hidden shadow-xl flex flex-col">
-        <div class="h-48 w-full overflow-hidden relative">
+        <div class="h-44 sm:h-48 w-full overflow-hidden relative">
           <img src="images/S__27754600_0.jpg" alt="Venue" class="w-full h-full object-cover hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
           <span class="absolute top-3 left-3 bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase font-headline">02 // CIRCUIT</span>
         </div>
-        <div class="p-6 flex-1 flex flex-col justify-between">
+        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
           <div>
-            <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Circuit Location</div>
-            <h3 class="text-xl font-black text-white mb-2">富士スピードウェイ</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">
+            <div class="text-[11px] sm:text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Circuit Location</div>
+            <h3 class="text-lg sm:text-xl font-black text-white mb-2 whitespace-nowrap">富士スピードウェイ</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
               日本を代表するモータースポーツの聖地。大音量サウンドを全力で鳴らし切る広大な特設エリアで開催。
             </p>
           </div>
@@ -395,16 +392,16 @@
 
       <!-- CARD 3 -->
       <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-2xl overflow-hidden shadow-xl flex flex-col">
-        <div class="h-48 w-full overflow-hidden relative">
+        <div class="h-44 sm:h-48 w-full overflow-hidden relative">
           <img src="images/S__27754599_0.jpg" alt="Culture" class="w-full h-full object-cover hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
           <span class="absolute top-3 left-3 bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase font-headline">03 // BASS VIBES</span>
         </div>
-        <div class="p-6 flex-1 flex flex-col justify-between">
+        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
           <div>
-            <div class="text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Culture</div>
-            <h3 class="text-xl font-black text-white mb-2">SOUND-ISM VIBES</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">
+            <div class="text-[11px] sm:text-xs font-bold text-brand-red uppercase tracking-widest mb-1">Culture</div>
+            <h3 class="text-lg sm:text-xl font-black text-white mb-2 whitespace-nowrap">SOUND-ISM VIBES</h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
               外向きオーディオ、カスタムカー、ストリートミュージックが融合する最高峰のサウンドミーティング。
             </p>
           </div>
@@ -416,27 +413,27 @@
 
   <!-- 出店情報（FOOD & BOOTH）セクション -->
   <section id="booth" class="max-w-5xl mx-auto px-4 py-8">
-    <div class="border-t border-b border-white/10 py-3 mb-8 flex items-center justify-between">
-      <div class="flex items-center gap-3">
+    <div class="border-t border-b border-white/10 py-3 mb-6 sm:mb-8 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 sm:gap-3">
         <h2 class="font-headline text-2xl md:text-3xl tracking-wider text-white">
           FOOD & <span class="text-brand-red">BOOTH</span>
         </h2>
-        <span class="text-xs font-bold text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded tracking-widest uppercase">
+        <span class="text-[11px] sm:text-xs font-bold text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded tracking-widest uppercase">
           出店情報
         </span>
       </div>
-      <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">OFFICIAL PARTNER SHOPS</span>
+      <span class="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">OFFICIAL PARTNER SHOPS</span>
     </div>
 
     <!-- 炭焼き酒場 雅（MIYAVI）出店紹介カード -->
-    <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden group">
+    <div class="bg-brand-card border border-brand-border hover:border-brand-red/60 transition duration-300 rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden group">
       <div class="absolute -right-20 -top-20 w-60 h-60 bg-brand-red/10 blur-[80px] rounded-full pointer-events-none"></div>
 
-      <div class="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 relative z-10">
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-5 sm:gap-8 relative z-10">
         
         <!-- ロゴ画像 -->
         <div class="shrink-0">
-          <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-white p-2.5 shadow-xl flex items-center justify-center border-2 border-white/90 group-hover:scale-105 transition duration-300">
+          <div class="w-32 h-32 sm:w-44 sm:h-44 rounded-full bg-white p-2 sm:p-2.5 shadow-xl flex items-center justify-center border-2 border-white/90 group-hover:scale-105 transition duration-300">
             <img 
               src="images/booth-miyavi.png" 
               alt="炭焼き酒場 雅（MIYAVI）" 
@@ -447,23 +444,24 @@
         </div>
 
         <!-- 店舗情報テキスト -->
-        <div class="flex-1 text-center md:text-left">
+        <div class="flex-1 w-full text-left">
           
-          <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
+          <div class="flex items-center gap-2 mb-2">
             <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase font-headline">FOOD BOOTH</span>
             <span class="text-xs text-gray-400 font-mono tracking-wider">炭火焼き鳥・酒場</span>
           </div>
 
-          <h3 class="text-2xl sm:text-3xl font-black text-white tracking-wide mb-2">
-            炭焼き酒場 雅 <span class="text-brand-red font-headline tracking-widest text-xl sm:text-2xl ml-1">(MIYAVI)</span>
+          <h3 class="text-xl sm:text-3xl font-black text-white tracking-wide mb-2 leading-tight">
+            <span>炭焼き酒場 雅</span>
+            <span class="text-brand-red font-headline tracking-widest text-lg sm:text-2xl ml-1">(MIYAVI)</span>
           </h3>
 
-          <p class="text-brand-red font-bold text-sm sm:text-base flex items-center justify-center md:justify-start gap-1.5 mb-4">
-            <i class="fa-solid fa-bullhorn text-xs"></i>
-            埼玉で一番美味しい「焼き鳥」を目指してます。
+          <p class="text-brand-red font-bold text-xs sm:text-base flex items-center gap-1.5 mb-4 leading-snug">
+            <i class="fa-solid fa-bullhorn text-xs shrink-0"></i>
+            <span>埼玉で一番美味しい「焼き鳥」を目指してます。</span>
           </p>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-300 mb-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-sm text-gray-300 mb-3.5">
             <div class="flex items-start gap-2.5 bg-black/50 p-3 rounded-xl border border-white/5">
               <i class="fa-solid fa-location-dot text-brand-red mt-0.5 shrink-0"></i>
               <div>
@@ -481,24 +479,24 @@
             </div>
           </div>
 
-          <div class="bg-black/50 p-3.5 rounded-xl border border-white/5 mb-3 text-xs sm:text-sm">
-            <div class="text-gray-400 font-bold mb-1.5 flex items-center justify-center md:justify-start gap-1.5">
+          <div class="bg-black/50 p-3 sm:p-3.5 rounded-xl border border-white/5 mb-3 text-xs sm:text-sm">
+            <div class="text-gray-400 font-bold mb-1.5 flex items-center gap-1.5">
               <i class="fa-regular fa-clock text-brand-red"></i>
-              営業時間
+              <span>営業時間</span>
             </div>
-            <div class="flex flex-col sm:flex-row gap-2 sm:gap-6 text-gray-300 font-mono">
+            <div class="flex flex-col sm:flex-row gap-1 sm:gap-6 text-gray-300 font-mono text-xs sm:text-sm">
               <div class="flex items-center gap-2">
-                <span class="text-gray-400 text-xs font-sans">月〜土 :</span>
+                <span class="text-gray-400 font-sans">月〜土 :</span>
                 <span class="text-white font-bold">11:00 - 23:00</span>
               </div>
               <div class="flex items-center gap-2">
-                <span class="text-gray-400 text-xs font-sans">日・祝日 :</span>
+                <span class="text-gray-400 font-sans">日・祝 :</span>
                 <span class="text-white font-bold">11:00 - 22:00</span>
               </div>
             </div>
           </div>
 
-          <p class="text-[11px] text-gray-500 leading-relaxed">
+          <p class="text-[10px] sm:text-[11px] text-gray-500 leading-relaxed">
             ※ 営業時間・定休日は変更となる場合がございますので、ご来店前に店舗にご確認ください。
           </p>
         </div>
@@ -512,35 +510,35 @@
     <div class="bg-brand-card border border-brand-border rounded-3xl overflow-hidden shadow-2xl">
       
       <!-- ブース幕写真バナー -->
-      <div class="h-48 sm:h-64 w-full relative overflow-hidden">
+      <div class="h-40 sm:h-64 w-full relative overflow-hidden">
         <img src="images/S__27754596_0.jpg" alt="Fuji Speedway Venue" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-black/40"></div>
-        <div class="absolute bottom-4 left-6 sm:left-10">
-          <span class="text-brand-red text-xs font-mono font-bold tracking-widest uppercase block mb-1">OFFICIAL BOOTH & STAGE</span>
-          <h2 class="text-2xl sm:text-4xl font-black text-white font-headline tracking-wide">
+        <div class="absolute bottom-3 left-4 sm:bottom-4 sm:left-10">
+          <span class="text-brand-red text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase block mb-0.5 sm:mb-1">OFFICIAL BOOTH & STAGE</span>
+          <h2 class="text-xl sm:text-4xl font-black text-white font-headline tracking-wide leading-tight">
             FUJI INTERNATIONAL SPEEDWAY
           </h2>
         </div>
       </div>
 
-      <div class="p-6 sm:p-10 space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="p-5 sm:p-10 space-y-5 sm:space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <span class="text-xs text-brand-red font-mono uppercase tracking-widest block font-bold">VENUE ACCESS</span>
-            <p class="text-gray-300 text-sm mt-0.5">静岡県駿東郡小山町中日向694</p>
+            <span class="text-[11px] sm:text-xs text-brand-red font-mono uppercase tracking-widest block font-bold">VENUE ACCESS</span>
+            <p class="text-gray-300 text-xs sm:text-sm mt-0.5">静岡県駿東郡小山町中日向694</p>
           </div>
 
           <button 
             id="copyBtn" 
             onclick="copyAddress()" 
-            class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white text-xs font-bold px-4 py-2.5 rounded-lg border border-white/20 transition cursor-pointer self-start md:self-auto backdrop-blur-sm"
+            class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white text-xs font-bold px-4 py-2.5 rounded-lg border border-white/20 transition cursor-pointer self-start sm:self-auto backdrop-blur-sm whitespace-nowrap"
           >
             <i class="fa-regular fa-copy text-brand-red"></i>
             <span id="copyBtnText">住所をコピーする</span>
           </button>
         </div>
 
-        <div class="w-full h-72 md:h-96 rounded-2xl overflow-hidden border border-white/10 shadow-inner filter grayscale contrast-125 hover:filter-none transition duration-500">
+        <div class="w-full h-64 sm:h-96 rounded-2xl overflow-hidden border border-white/10 shadow-inner filter grayscale contrast-125 hover:filter-none transition duration-500">
           <iframe 
             title="Fuji Speedway Map"
             width="100%" 
@@ -552,18 +550,18 @@
           </iframe>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-400">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm text-gray-400">
           <div class="bg-black/60 p-4 rounded-xl border border-white/10 backdrop-blur-sm">
             <div class="text-white font-bold flex items-center gap-2 mb-1">
               <i class="fa-solid fa-car text-brand-red"></i>
-              お車でお越しの方
+              <span>お車でお越しの方</span>
             </div>
             東名高速道路「大井松田I.C.」または「御殿場I.C.」より約20分。新東名「新御殿場I.C.」より約15分。
           </div>
           <div class="bg-black/60 p-4 rounded-xl border border-white/10 backdrop-blur-sm">
             <div class="text-white font-bold flex items-center gap-2 mb-1">
               <i class="fa-solid fa-circle-info text-brand-red"></i>
-              入場ゲート・専用エリア
+              <span>入場ゲート・専用エリア</span>
             </div>
             当イベント特設会場のゲート番号、搬入経路、駐車場割当は後日案内を掲載します。
           </div>
@@ -574,56 +572,58 @@
   </section>
 
   <!-- 運営事務局 お問い合わせセクション -->
-  <section id="contact" class="max-w-5xl mx-auto px-4 pt-4 pb-16">
-    <div class="bg-brand-card border border-brand-red/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+  <section id="contact" class="max-w-5xl mx-auto px-4 pt-4 pb-14 sm:pb-16">
+    <div class="bg-brand-card border border-brand-red/30 rounded-3xl p-5 sm:p-10 shadow-2xl relative overflow-hidden">
       <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-red/10 blur-[80px] rounded-full pointer-events-none"></div>
 
-      <div class="flex items-center gap-2 mb-4">
+      <div class="flex items-center gap-2 mb-3 sm:mb-4">
         <span class="w-2.5 h-2.5 rounded-full bg-brand-red animate-pulse"></span>
-        <span class="text-xs font-headline tracking-widest text-brand-red uppercase font-bold">CONTACT / OFFICIAL LINE</span>
+        <span class="text-[11px] sm:text-xs font-headline tracking-widest text-brand-red uppercase font-bold">CONTACT / OFFICIAL LINE</span>
       </div>
 
-      <div class="flex flex-wrap items-center gap-3 mb-3">
+      <!-- タイトル：スマホでも綺麗に収まるよう配置 -->
+      <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-2.5 sm:mb-3">
         <img 
           src="images/logo.png" 
           alt="SOUND-ISM" 
-          class="h-8 sm:h-10 w-auto object-contain"
+          class="h-7 sm:h-10 w-auto object-contain shrink-0"
           onerror="this.onerror=null; this.src='images/logo.PNG'; this.onerror=function(){this.src='images/logo.jpg'; this.onerror=function(){this.src='images/logo.JPG'; this.onerror=function(){this.src='images/IMG_0394.jpg';}};};"
         />
-        <span class="text-xl sm:text-2xl font-black text-white flex items-center gap-1.5">
-          <span class="font-tourney text-brand-red text-2xl sm:text-3xl italic">2027</span>
+        <div class="text-lg sm:text-2xl font-black text-white flex items-center gap-1.5 whitespace-nowrap">
+          <span class="font-tourney text-brand-red text-xl sm:text-3xl italic">2027</span>
           <span>実行委員会 事務局</span>
-        </span>
+        </div>
       </div>
 
-      <p class="text-gray-400 text-xs sm:text-sm mb-8 max-w-2xl leading-relaxed">
+      <p class="text-gray-400 text-xs sm:text-sm mb-6 sm:mb-8 max-w-2xl leading-relaxed">
         エントリーに関するご質問、ブース出展・協賛スポンサーに関するお問い合わせは、下記の「SOUND-ISM 公式LINE」よりお気軽にご連絡ください。
       </p>
 
-      <div class="max-w-lg mx-auto">
+      <!-- 公式LINE 友だち追加ボタン（スマホでのタップ性と表示を最適化） -->
+      <div class="max-w-md mx-auto">
         <a 
           href="https://line.me/R/ti/p/@783ksfzr" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="group flex items-center justify-between bg-[#06C755] hover:bg-[#05b34c] text-white px-6 sm:px-8 py-5 rounded-2xl shadow-xl shadow-[#06C755]/25 hover:shadow-[#06C755]/40 transition-all duration-300 border border-white/20 transform hover:-translate-y-0.5"
+          class="group flex items-center justify-between bg-[#06C755] hover:bg-[#05b34c] text-white px-4 sm:px-6 py-4 rounded-2xl shadow-xl shadow-[#06C755]/25 hover:shadow-[#06C755]/40 transition-all duration-300 border border-white/20 transform hover:-translate-y-0.5"
         >
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white text-3xl shrink-0 group-hover:scale-110 transition duration-300">
+          <div class="flex items-center gap-3 sm:gap-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/20 flex items-center justify-center text-white text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition duration-300">
               <i class="fa-brands fa-line"></i>
             </div>
             <div class="text-left">
-              <span class="text-[11px] font-bold tracking-wider uppercase opacity-90 block">OFFICIAL LINE ACCOUNT</span>
-              <span class="text-base sm:text-lg font-black tracking-wide block">公式LINEでお問い合わせ</span>
+              <span class="text-[9px] sm:text-[10px] font-bold tracking-wider uppercase opacity-90 block">OFFICIAL LINE</span>
+              <span class="text-sm sm:text-base font-black tracking-wide block whitespace-nowrap">公式LINEでお問い合わせ</span>
             </div>
           </div>
 
-          <div class="flex items-center gap-2 font-mono text-sm font-bold bg-black/20 px-3.5 py-1.5 rounded-lg group-hover:bg-black/30 transition">
-            <span>友だち追加</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+          <div class="flex items-center gap-1.5 font-mono text-xs font-bold bg-black/20 px-2.5 py-1.5 rounded-lg group-hover:bg-black/30 transition shrink-0 whitespace-nowrap">
+            <span>追加</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
           </div>
         </a>
 
-        <div class="text-center mt-3">
+        <div class="text-center mt-2.5">
           <span class="text-[11px] text-gray-500 font-mono">LINE ID : @783ksfzr</span>
         </div>
       </div>
@@ -631,18 +631,18 @@
   </section>
 
   <!-- フッター -->
-  <footer class="border-t border-white/10 bg-black/90 py-8 px-4 text-center text-xs text-gray-500">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+  <footer class="border-t border-white/10 bg-black/90 py-6 sm:py-8 px-4 text-center text-xs text-gray-500">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
       <div class="flex items-center gap-2">
         <img 
           src="images/logo.png" 
           alt="SOUND-ISM" 
-          class="h-8 w-auto object-contain"
+          class="h-7 sm:h-8 w-auto object-contain"
           onerror="this.onerror=null; this.src='images/logo.PNG'; this.onerror=function(){this.src='images/logo.jpg'; this.onerror=function(){this.src='images/logo.JPG'; this.onerror=function(){this.src='images/IMG_0394.jpg';}};};"
         />
-        <span class="text-brand-red font-tourney text-2xl font-black italic tracking-widest drop-shadow-[0_0_10px_rgba(255,20,56,0.5)]">2027</span>
+        <span class="text-brand-red font-tourney text-xl sm:text-2xl font-black italic tracking-widest drop-shadow-[0_0_10px_rgba(255,20,56,0.5)]">2027</span>
       </div>
-      <p>© 2027 SOUND-ISM PROJECT. ALL RIGHTS RESERVED.</p>
+      <p class="text-[11px] sm:text-xs">© 2027 SOUND-ISM PROJECT. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 
